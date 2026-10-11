@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "e86d1b0447d62cc0",
+    "type": "split",
+    "children": [
+      {
+        "id": "74a4d6a388e12f71",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc54c08790193bd0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "测试github同步.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "测试github同步"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8196e5e6b96fef65",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa81052832c89e01",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b0b3054590906336",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "e1cf0d2cefca421e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "04d9ea7b9f9f88eb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "afafac36146932a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa8a4d0e64098c7a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1831e94aa669e96a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "测试.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "c08a7ea19329ea97",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "测试.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "94021113197d304f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "4606a52204806c30",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "8d0fe394db3eed64",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "测试github同步.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "494d79cf54533437",
+            "type": "leaf",
+            "state": {
+              "type": "sidenote-view",
+              "state": {
+                "filePath": "测试github同步.md"
+              },
+              "icon": "message-square",
+              "title": "Side Note"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-stille:Toggle Stille": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false,
+      "callout-manager:Insert Callout": false,
+      "side-note:Side Note: Open in Sidebar": false,
+      "article-annotator:文章批注": false,
+      "annocard:标注模式": false,
+      "annocard:打开卡片侧边栏": false,
+      "github-sync:Sync with Remote": false
+    }
+  },
+  "active": "cc54c08790193bd0",
+  "lastOpenFiles": [
+    "测试github同步.md",
+    "《女人，一本给男人看的书》-佩顿.贝利.pdf",
+    "测试-批注导出.md",
+    ".obsidian/plugins/annocard/annotations/测试.md",
+    "测试.md",
+    "article-annotator/annotations.json",
+    "article-annotator",
+    "Untitled.pdf"
+  ]
+}

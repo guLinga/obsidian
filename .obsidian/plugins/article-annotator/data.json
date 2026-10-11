@@ -1,0 +1,45 @@
+{
+  "annotations": [
+    {
+      "id": "mv3jwllfxxccox",
+      "filePath": "测试.md",
+      "fileType": "markdown",
+      "type": "note",
+      "color": "#FCD34D",
+      "highlightedText": "马太福音11章12节 βiaǒoμal（是努力进天国呢？还是天国饱受攻击呢？）应该是天国饱受攻击，因为后面有个词是努力的人就得着了，但是努力的人是个负面的词。",
+      "noteContent": "111",
+      "groupId": null,
+      "created": 1791706694739,
+      "updated": 1791706699286,
+      "order": 1791706694739,
+      "position": {
+        "kind": "markdown",
+        "startLine": 756,
+        "startCh": 0,
+        "endLine": 756,
+        "endCh": 79
+      }
+    },
+    {
+      "id": "mv3jzjz22zerel",
+      "filePath": "测试.md",
+      "fileType": "markdown",
+      "type": "note",
+      "color": "#FCD34D",
+      "highlightedText": "3.社会背景、历史背景",
+      "noteContent": "测试2",
+      "groupId": null,
+      "created": 1791706832606,
+      "updated": 1791706840936,
+      "order": 1791706832606,
+      "position": {
+        "kind": "markdown",
+        "startLine": 760,
+        "startCh": 0,
+        "endLine": 760,
+        "endCh": 11
+      }
+    }
+  ],
+  "groups": []
+}
