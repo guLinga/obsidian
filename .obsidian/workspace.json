@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "测试github同步.md",
+                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "测试github同步"
+              "title": "《女人，一本给男人看的书》-佩顿.贝利"
             }
           }
         ]
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "测试github同步.md",
+                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -176,19 +176,18 @@
             "state": {
               "type": "sidenote-view",
               "state": {
-                "filePath": "测试github同步.md"
+                "filePath": "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md"
               },
               "icon": "message-square",
               "title": "Side Note"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,9 +210,13 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "cc54c08790193bd0",
+  "active": "b0b3054590906336",
   "lastOpenFiles": [
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.pdf",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
     "测试github同步.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利",
+    "书籍",
     "《女人，一本给男人看的书》-佩顿.贝利.pdf",
     "测试-批注导出.md",
     ".obsidian/plugins/annocard/annotations/测试.md",
