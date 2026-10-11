@@ -1,7 +1,7 @@
 {
   "remoteURL": "git@github.com:guLinga/obsidian.git",
   "gitLocation": "",
-  "syncinterval": 500,
+  "syncinterval": 0,
   "isSyncOnLoad": true,
   "checkStatusOnLoad": true,
   "noticeLevel": "ALL",
