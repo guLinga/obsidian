@@ -41,5 +41,19 @@
       }
     }
   ],
-  "groups": []
+  "groups": [],
+  "settings": {
+    "defaultColor": "#FCD34D",
+    "colors": [
+      "#FCD34D",
+      "#FBBF24",
+      "#F97316",
+      "#EF4444",
+      "#8B5CF6",
+      "#06B6D4"
+    ],
+    "customHighlightColor": "",
+    "customHighlightColorName": "自定义",
+    "language": "zh"
+  }
 }

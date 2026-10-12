@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第五章 女性的性欲.md",
+                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第五章 女性的性欲"
+              "title": "《女人，一本给男人看的书》-佩顿.贝利"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第五章 女性的性欲.md",
+                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -195,9 +195,19 @@
               "icon": "message-square",
               "title": "Side Note"
             }
+          },
+          {
+            "id": "74b7c4b80edfadee",
+            "type": "leaf",
+            "state": {
+              "type": "article-annotator-sidebar",
+              "state": {},
+              "icon": "pen-tool",
+              "title": "文章批注"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -216,32 +226,29 @@
       "pdf-plus:PDF++: Toggle auto-copy": false,
       "pdf-plus:PDF++: Toggle auto-focus": false,
       "pdf-plus:PDF++: Toggle auto-paste": false,
-      "callout-manager:Insert Callout": false,
       "side-note:Side Note: Open in Sidebar": false,
       "article-annotator:文章批注": false,
-      "annocard:标注模式": false,
-      "annocard:打开卡片侧边栏": false,
       "github-sync:Sync with Remote": false,
       "copilot:Open Copilot Agent Chat": false
     }
   },
   "active": "cc54c08790193bd0",
   "lastOpenFiles": [
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/女人：一本给男人看的书.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/目录.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第五章 女性的性欲.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第八章 疾病与健康.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第七章 性与爱.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第六章 女性的生育.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第四章. 直觉与逻辑.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第九章 朋友.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第二章 女性的形象.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第一章 基因决定的女性.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/女人：一本给男人看的书.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十二章 男女在一起.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十一章 单身女人.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十章 工作中的妇女.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第八章 疾病与健康.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第七章 性与爱.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第六章 女性的生育.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第三章 女人的身体.md",
     "第十三章 做母亲.md",
     "第十二章 男女在一起.md",
