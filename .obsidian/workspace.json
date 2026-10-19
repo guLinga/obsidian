@@ -4,53 +4,44 @@
     "type": "split",
     "children": [
       {
-        "id": "74a4d6a388e12f71",
+        "id": "13b164221225bc13",
         "type": "tabs",
         "children": [
           {
-            "id": "cc54c08790193bd0",
+            "id": "dabcd88e58a5d63a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第四章. 直觉与逻辑✅.md",
+                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第四章. 直觉与逻辑✅"
-            }
-          },
-          {
-            "id": "0ebde7865f1cf064",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第五章 女性的性欲✅.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第五章 女性的性欲✅"
-            }
-          },
-          {
-            "id": "e6dc0cb482f58b66",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第十三章 做母亲"
+              "title": "第二部分 “我说”"
             }
           }
-        ],
-        "currentTab": 2
+        ]
+      },
+      {
+        "id": "e699d43a964aa081",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc70e39b2c8d573c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第二部分 “我说”"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +103,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.12109375
+    "width": 316.12109375,
+    "collapsed": true
   },
   "right": {
     "id": "afafac36146932a5",
@@ -190,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md",
+                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -205,7 +197,7 @@
             "state": {
               "type": "sidenote-view",
               "state": {
-                "filePath": "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md"
+                "filePath": "copilot/copilot-conversations/你好啊@20261015_211101.md"
               },
               "icon": "message-square",
               "title": "Side Note"
@@ -219,6 +211,16 @@
               "state": {},
               "icon": "pen-tool",
               "title": "文章批注"
+            }
+          },
+          {
+            "id": "48edecd4587833a7",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot (Quick Chat)"
             }
           }
         ],
@@ -244,44 +246,51 @@
       "side-note:Side Note: Open in Sidebar": false,
       "article-annotator:文章批注": false,
       "github-sync:Sync with Remote": false,
-      "copilot:Open Copilot Agent Chat": false,
-      "notebook-navigator:Notebook Navigator": false
+      "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "e6dc0cb482f58b66",
+  "active": "dabcd88e58a5d63a",
   "lastOpenFiles": [
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十二章 男女在一起.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十一章 单身女人.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十章 工作中的妇女.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第九章 朋友.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第八章 疾病与健康.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第七章 性与爱.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第六章 女性的生育.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第五章 女性的性欲✅.md",
+    "Pasted image 20261019222116.png",
+    "Pasted image 20261019222101.png",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第三部分 整合成篇.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第四部分 情境应用.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第一部分 “他说”.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/阅读材料.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/模板索引.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/高效写作的秘密-杰拉尔德·格拉夫 & 凯茜·比肯施泰因.pdf",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/未命名",
+    "Pasted image 20261017165934.png",
+    "Pasted image 20261017165920.png",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/导论 加入对话.md",
+    "Pasted image 20261017162532.png",
+    "Pasted image 20261017162510.png",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/英文版第一版 前言 揭开学术对话的面纱.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/英文版第三版 前言.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/对本书的赞誉.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/前置了解.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/前置了解/前置了解.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/前置了解",
+    "问题/教会中下一步带领的问题.md",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第四章. 直觉与逻辑✅.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第一章 基因决定的女性✅.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第二章 女性的形象.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/目录.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第三章 女人的身体.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/女人：一本给男人看的书.md",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第一章 基因决定的女性✅.md",
+    "copilot/copilot-conversations/think正在提炼对话核心，准备给出一个不超过五个词的标题。_@20261016_220645.md",
+    "copilot/copilot-conversations/think用户要求为对话生成一个最多五个词的标题。当前对话仅@20261015_232318.md",
+    "问题",
+    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第九章 朋友.md",
+    "copilot/copilot-conversations/1@20261015_231258.md",
+    "copilot/copilot-conversations/think用户要求为这段对话生成一个最多五个词的标题。_正在构@20261015_223635.md",
+    "copilot/copilot-conversations/Hello_Conversation@20261015_223635.md",
+    "copilot/copilot-conversations/你好啊@20261015_211101.md",
+    "copilot/copilot-conversations",
+    "copilot",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md",
-    "第十三章 做母亲.md",
-    "第十二章 男女在一起.md",
-    "第十一章 单身女人.md",
-    "第十章 工作中的妇女.md",
-    "第九章 朋友.md",
-    "第八章 疾病与健康.md",
-    "第七章 性与爱.md",
-    "第六章 女性的生育.md",
-    "第五章 女性的性欲.md",
-    "第四章. 直觉与逻辑.md",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.pdf",
     "书籍/《女人，一本给男人看的书》-佩顿.贝利",
-    "书籍",
-    "《女人，一本给男人看的书》-佩顿.贝利.pdf",
-    "article-annotator/annotations.json",
-    "article-annotator",
-    "Untitled.pdf"
+    "书籍"
   ]
 }

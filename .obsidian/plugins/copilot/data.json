@@ -317,7 +317,7 @@
   "inlineEditCommands": [],
   "projectList": [],
   "lastDismissedVersion": null,
-  "lastShownStartupVersion": null,
+  "lastShownStartupVersion": "4.0.15",
   "passMarkdownImages": true,
   "enableAutonomousAgent": true,
   "enableCustomPromptTemplating": true,
@@ -383,9 +383,78 @@
       }
     }
   },
-  "providers": {},
-  "configuredModels": [],
-  "backends": {},
+  "providers": {
+    "840e2600-d209-49a4-942d-a288d1775210": {
+      "providerType": "openai-compatible",
+      "displayName": "cursor auto",
+      "baseUrl": "http://localhost:3000/v1",
+      "enableCors": true,
+      "requiresApiKey": false,
+      "origin": {
+        "kind": "byok"
+      },
+      "providerId": "840e2600-d209-49a4-942d-a288d1775210",
+      "addedAt": 1792077788709,
+      "apiKeyKeychainId": null
+    },
+    "2d048fd5-3a09-4e08-a27d-b95173980ad8": {
+      "providerType": "openai-compatible",
+      "displayName": "LM Studio",
+      "baseUrl": "http://localhost:1234/v1",
+      "enableCors": false,
+      "requiresApiKey": false,
+      "origin": {
+        "kind": "byok"
+      },
+      "providerId": "2d048fd5-3a09-4e08-a27d-b95173980ad8",
+      "addedAt": 1792078422519,
+      "apiKeyKeychainId": null
+    }
+  },
+  "configuredModels": [
+    {
+      "configuredModelId": "780fadcd-f4ee-4160-ab1b-da18ecb67e98",
+      "providerId": "840e2600-d209-49a4-942d-a288d1775210",
+      "info": {
+        "id": "default",
+        "displayName": "default"
+      },
+      "configuredAt": 1792077788729
+    },
+    {
+      "configuredModelId": "11dd04f7-f0fc-406d-817c-5e08e560bbfd",
+      "providerId": "2d048fd5-3a09-4e08-a27d-b95173980ad8",
+      "info": {
+        "id": "qwen/qwen3-1.7b",
+        "displayName": "qwen/qwen3-1.7b"
+      },
+      "configuredAt": 1792078422545
+    },
+    {
+      "configuredModelId": "be4c124e-ddbc-4037-ba90-8210a98f1ae4",
+      "providerId": "2d048fd5-3a09-4e08-a27d-b95173980ad8",
+      "info": {
+        "id": "text-embedding-nomic-embed-text-v1.5",
+        "displayName": "text-embedding-nomic-embed-text-v1.5",
+        "isEmbedding": true
+      },
+      "configuredAt": 1792078422545
+    }
+  ],
+  "backends": {
+    "chat": {
+      "enabledModels": [
+        "780fadcd-f4ee-4160-ab1b-da18ecb67e98",
+        "11dd04f7-f0fc-406d-817c-5e08e560bbfd"
+      ]
+    },
+    "opencode": {
+      "enabledModels": [
+        "780fadcd-f4ee-4160-ab1b-da18ecb67e98",
+        "11dd04f7-f0fc-406d-817c-5e08e560bbfd"
+      ]
+    }
+  },
   "copilotPlusCatalog": {
     "models": [
       {
