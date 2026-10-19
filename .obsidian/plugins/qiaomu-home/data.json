@@ -1,0 +1,237 @@
+{
+  "language": "auto",
+  "openOnStartup": true,
+  "replaceNewTab": true,
+  "headline": "clock",
+  "customHeadline": "",
+  "wallpaper": {
+    "source": "curated",
+    "rotation": "daily",
+    "dim": 0.35,
+    "unsplashSecret": "",
+    "query": "nature landscape",
+    "localPath": "",
+    "localMode": "folder",
+    "localFolder": "",
+    "localRecursive": false,
+    "localCurrent": "",
+    "localSeen": [],
+    "localChosenOn": "",
+    "localSelectionKey": "",
+    "current": {
+      "id": "curated:c9MFM8rSMsQ",
+      "url": "https://images.unsplash.com/photo-1541599468348-e96984315921",
+      "author": "Michelle Spollen",
+      "authorUrl": "https://unsplash.com/@micki?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/c9MFM8rSMsQ?utm_source=qiaomu_home&utm_medium=referral",
+      "color": "#264059"
+    },
+    "chosenOn": "2026-10-19"
+  },
+  "actions": [
+    "builtin:daily",
+    "builtin:canvas",
+    "builtin:base",
+    "builtin:folder",
+    "builtin:import"
+  ],
+  "hiddenActions": [],
+  "commands": [],
+  "tabsEnabled": true,
+  "homePageId": "home",
+  "homeShortcutsSeeded": true,
+  "shortcutFavicons": true,
+  "activePageId": "knowledge",
+  "pages": [
+    {
+      "id": "home",
+      "name": "主页",
+      "moduleOptions": {
+        "daily-focus": {
+          "visible": true,
+          "limit": 3
+        },
+        "todo": {
+          "visible": true,
+          "limit": 3
+        },
+        "quick-capture": {
+          "visible": true,
+          "limit": 3
+        },
+        "recent": {
+          "visible": true,
+          "limit": 3
+        },
+        "shortcut:home-shortcuts": {
+          "visible": true,
+          "limit": 3
+        }
+      },
+      "moduleOrder": [
+        "daily-focus",
+        "todo",
+        "quick-capture",
+        "recent",
+        "shortcut:home-shortcuts"
+      ],
+      "shortcutGroups": [
+        {
+          "id": "home-shortcuts",
+          "name": "常用入口",
+          "items": [
+            {
+              "id": "daily",
+              "kind": "daily",
+              "target": "today",
+              "name": "今日日记",
+              "icon": "calendar"
+            },
+            {
+              "id": "x",
+              "kind": "url",
+              "target": "https://x.com/",
+              "name": "X",
+              "icon": "favicon"
+            },
+            {
+              "id": "google",
+              "kind": "url",
+              "target": "https://www.google.com/",
+              "name": "谷歌",
+              "icon": "favicon"
+            }
+          ]
+        }
+      ],
+      "defaultVisible": false,
+      "showRecommendations": false
+    },
+    {
+      "id": "focus",
+      "name": "专注",
+      "moduleOptions": {
+        "focus-timer": {
+          "visible": true,
+          "limit": 3
+        },
+        "ambient-sound": {
+          "visible": true,
+          "limit": 3
+        },
+        "due-today": {
+          "visible": true,
+          "limit": 3
+        },
+        "overdue": {
+          "visible": true,
+          "limit": 3
+        },
+        "day-progress": {
+          "visible": true,
+          "limit": 3
+        },
+        "countdown": {
+          "visible": true,
+          "limit": 3
+        }
+      },
+      "moduleOrder": [
+        "focus-timer",
+        "ambient-sound",
+        "due-today",
+        "overdue",
+        "day-progress",
+        "countdown"
+      ],
+      "shortcutGroups": [],
+      "defaultVisible": false,
+      "showRecommendations": false
+    },
+    {
+      "id": "knowledge",
+      "name": "知识",
+      "moduleOptions": {
+        "recently-modified": {
+          "visible": true,
+          "limit": 3
+        },
+        "review-note": {
+          "visible": true,
+          "limit": 3
+        },
+        "weekly-review": {
+          "visible": true,
+          "limit": 3
+        },
+        "activity-heatmap": {
+          "visible": true,
+          "limit": 3
+        },
+        "tag-cloud": {
+          "visible": true,
+          "limit": 3
+        },
+        "orphan-notes": {
+          "visible": true,
+          "limit": 3
+        }
+      },
+      "moduleOrder": [
+        "recently-modified",
+        "review-note",
+        "weekly-review",
+        "activity-heatmap",
+        "tag-cloud",
+        "orphan-notes"
+      ],
+      "shortcutGroups": [],
+      "defaultVisible": false,
+      "showRecommendations": false
+    }
+  ],
+  "captureTarget": "inbox",
+  "captureInboxPath": "Inbox.md",
+  "todoPath": "Home Todo.md",
+  "githubSecret": "",
+  "createFolder": "",
+  "todoDaily": true,
+  "todoAutoCarry": false,
+  "reviewFolder": "",
+  "focusSession": {
+    "durationMinutes": 25,
+    "focusMinutes": 25,
+    "remainingMs": 1500000,
+    "endAt": 0,
+    "kind": "focus",
+    "label": ""
+  },
+  "focusLog": false,
+  "focusStats": {
+    "day": "",
+    "count": 0,
+    "minutes": 0
+  },
+  "dailyFocus": {
+    "day": "",
+    "items": []
+  },
+  "openInNewTab": false,
+  "todoCarryDays": 7,
+  "captureFormat": "plain",
+  "recentPinned": [],
+  "recentHidden": [],
+  "reviewSeen": {},
+  "reviewExcluded": [],
+  "reviewExcludeDaily": true,
+  "focusSound": true,
+  "ambient": {
+    "kind": "brown",
+    "volume": 0.4
+  },
+  "countdown": {
+    "label": "",
+    "date": ""
+  },
+  "hiddenRecommendations": []
+}

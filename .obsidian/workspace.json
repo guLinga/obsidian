@@ -4,41 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "13b164221225bc13",
+        "id": "b00edb3ac5292ec4",
         "type": "tabs",
         "children": [
           {
-            "id": "dabcd88e58a5d63a",
+            "id": "9ae7b9be53b39de4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第二部分 “我说”"
-            }
-          }
-        ]
-      },
-      {
-        "id": "e699d43a964aa081",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "bc70e39b2c8d573c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第二部分 “我说”"
+              "type": "qiaomu-home",
+              "state": {},
+              "icon": "house",
+              "title": "主页"
             }
           }
         ]
@@ -103,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.12109375,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "afafac36146932a5",
@@ -182,7 +157,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -228,7 +202,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -246,14 +221,15 @@
       "side-note:Side Note: Open in Sidebar": false,
       "article-annotator:文章批注": false,
       "github-sync:Sync with Remote": false,
-      "copilot:Open Copilot Agent Chat": false
+      "copilot:Open Copilot Agent Chat": false,
+      "qiaomu-home:打开乔木Home": false
     }
   },
-  "active": "dabcd88e58a5d63a",
+  "active": "9ae7b9be53b39de4",
   "lastOpenFiles": [
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
     "Pasted image 20261019222116.png",
     "Pasted image 20261019222101.png",
-    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第二部分 “我说”.md",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第三部分 整合成篇.md",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第四部分 情境应用.md",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第一部分 “他说”.md",
