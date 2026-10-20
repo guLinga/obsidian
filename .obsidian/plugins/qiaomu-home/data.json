@@ -19,14 +19,14 @@
     "localChosenOn": "",
     "localSelectionKey": "",
     "current": {
-      "id": "curated:c9MFM8rSMsQ",
-      "url": "https://images.unsplash.com/photo-1541599468348-e96984315921",
-      "author": "Michelle Spollen",
-      "authorUrl": "https://unsplash.com/@micki?utm_source=qiaomu_home&utm_medium=referral",
-      "page": "https://unsplash.com/photos/c9MFM8rSMsQ?utm_source=qiaomu_home&utm_medium=referral",
-      "color": "#264059"
+      "id": "curated:uOi3lg8fGl4",
+      "url": "https://images.unsplash.com/photo-1473800447596-01729482b8eb",
+      "author": "Sam Ferrara",
+      "authorUrl": "https://unsplash.com/@samferrara?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/uOi3lg8fGl4?utm_source=qiaomu_home&utm_medium=referral",
+      "color": "#262640"
     },
-    "chosenOn": "2026-10-19"
+    "chosenOn": "2026-10-20"
   },
   "actions": [
     "builtin:daily",
@@ -48,11 +48,11 @@
       "name": "主页",
       "moduleOptions": {
         "daily-focus": {
-          "visible": true,
+          "visible": false,
           "limit": 3
         },
         "todo": {
-          "visible": true,
+          "visible": false,
           "limit": 3
         },
         "quick-capture": {
