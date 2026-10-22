@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/模板索引.md",
+                "file": "读书报告/读书报告格式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "模板索引"
+              "title": "读书报告格式"
             }
           }
         ]
@@ -181,7 +181,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/模板索引.md",
+                "file": "读书报告/读书报告格式.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -251,8 +251,13 @@
   },
   "active": "4dd32602eca0acd4",
   "lastOpenFiles": [
-    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第四部分 情境应用.md",
+    "读书报告/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/未命名.md",
+    "读书报告/读书报告格式.md",
+    "读书报告/读书报告",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/模板索引.md",
+    "读书报告/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因",
+    "读书报告",
+    "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第四部分 情境应用.md",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/阅读材料.md",
     "attachments/Pasted image 20261021224513.png",
     "书籍/高效写作的秘密-杰拉尔德·格拉夫_&_凯茜·比肯施泰因/第三部分 整合成篇.md",
@@ -291,10 +296,6 @@
     "copilot/copilot-conversations/1@20261015_231258.md",
     "copilot/copilot-conversations/think用户要求为这段对话生成一个最多五个词的标题。_正在构@20261015_223635.md",
     "copilot/copilot-conversations/Hello_Conversation@20261015_223635.md",
-    "copilot/copilot-conversations/你好啊@20261015_211101.md",
-    "copilot/copilot-conversations",
-    "copilot",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/第十三章 做母亲.md",
-    "书籍/《女人，一本给男人看的书》-佩顿.贝利/《女人，一本给男人看的书》-佩顿.贝利.pdf"
+    "copilot/copilot-conversations/你好啊@20261015_211101.md"
   ]
 }
