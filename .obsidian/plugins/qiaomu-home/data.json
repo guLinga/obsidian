@@ -19,14 +19,14 @@
     "localChosenOn": "",
     "localSelectionKey": "",
     "current": {
-      "id": "curated:uOi3lg8fGl4",
-      "url": "https://images.unsplash.com/photo-1473800447596-01729482b8eb",
-      "author": "Sam Ferrara",
-      "authorUrl": "https://unsplash.com/@samferrara?utm_source=qiaomu_home&utm_medium=referral",
-      "page": "https://unsplash.com/photos/uOi3lg8fGl4?utm_source=qiaomu_home&utm_medium=referral",
-      "color": "#262640"
+      "id": "curated:xj-s70L4rrY",
+      "url": "https://images.unsplash.com/photo-1710273330112-1461aa903ac7",
+      "author": "James Kelly-Smith",
+      "authorUrl": "https://unsplash.com/@jksphotographer?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/xj-s70L4rrY?utm_source=qiaomu_home&utm_medium=referral",
+      "color": "#404040"
     },
-    "chosenOn": "2026-10-20"
+    "chosenOn": "2026-10-22"
   },
   "actions": [
     "builtin:daily",
@@ -41,40 +41,11 @@
   "homePageId": "home",
   "homeShortcutsSeeded": true,
   "shortcutFavicons": true,
-  "activePageId": "knowledge",
+  "activePageId": "home",
   "pages": [
     {
       "id": "home",
       "name": "主页",
-      "moduleOptions": {
-        "daily-focus": {
-          "visible": false,
-          "limit": 3
-        },
-        "todo": {
-          "visible": false,
-          "limit": 3
-        },
-        "quick-capture": {
-          "visible": true,
-          "limit": 3
-        },
-        "recent": {
-          "visible": true,
-          "limit": 3
-        },
-        "shortcut:home-shortcuts": {
-          "visible": true,
-          "limit": 3
-        }
-      },
-      "moduleOrder": [
-        "daily-focus",
-        "todo",
-        "quick-capture",
-        "recent",
-        "shortcut:home-shortcuts"
-      ],
       "shortcutGroups": [
         {
           "id": "home-shortcuts",
@@ -104,12 +75,42 @@
           ]
         }
       ],
+      "moduleOptions": {
+        "daily-focus": {
+          "visible": false,
+          "limit": 3
+        },
+        "todo": {
+          "visible": false,
+          "limit": 3
+        },
+        "quick-capture": {
+          "visible": true,
+          "limit": 3
+        },
+        "recent": {
+          "visible": true,
+          "limit": 3
+        },
+        "shortcut:home-shortcuts": {
+          "visible": true,
+          "limit": 3
+        }
+      },
+      "moduleOrder": [
+        "daily-focus",
+        "todo",
+        "quick-capture",
+        "recent",
+        "shortcut:home-shortcuts"
+      ],
       "defaultVisible": false,
       "showRecommendations": false
     },
     {
       "id": "focus",
       "name": "专注",
+      "shortcutGroups": [],
       "moduleOptions": {
         "focus-timer": {
           "visible": true,
@@ -144,13 +145,13 @@
         "day-progress",
         "countdown"
       ],
-      "shortcutGroups": [],
       "defaultVisible": false,
       "showRecommendations": false
     },
     {
       "id": "knowledge",
       "name": "知识",
+      "shortcutGroups": [],
       "moduleOptions": {
         "recently-modified": {
           "visible": true,
@@ -185,7 +186,6 @@
         "tag-cloud",
         "orphan-notes"
       ],
-      "shortcutGroups": [],
       "defaultVisible": false,
       "showRecommendations": false
     }
