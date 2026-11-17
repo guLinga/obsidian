@@ -104,7 +104,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 381.90625
+    "width": 381.90625,
+    "collapsed": true
   },
   "right": {
     "id": "afafac36146932a5",
@@ -250,7 +251,7 @@
       "qiaomu-home:打开乔木Home": false
     }
   },
-  "active": "e1cf0d2cefca421e",
+  "active": "fbe49027b986ecbb",
   "lastOpenFiles": [
     "书籍/史普罗《本乎恩，也因着信：以弗所书解经注释》/史普罗《本乎恩，也因着信：以弗所书解经注释》.md",
     "书籍/加尔文《以弗所书注释》/加尔文以弗所书注释.md",
