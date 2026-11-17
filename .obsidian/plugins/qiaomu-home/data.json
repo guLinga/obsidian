@@ -19,14 +19,14 @@
     "localChosenOn": "",
     "localSelectionKey": "",
     "current": {
-      "id": "curated:ESLWcO_qd8A",
-      "url": "https://images.unsplash.com/photo-1629316583544-7d83debbc4ad",
-      "author": "Dmytro Bukhantsov",
-      "authorUrl": "https://unsplash.com/@bdv91?utm_source=qiaomu_home&utm_medium=referral",
-      "page": "https://unsplash.com/photos/ESLWcO_qd8A?utm_source=qiaomu_home&utm_medium=referral",
-      "color": "#404026"
+      "id": "curated:JgOeRuGD_Y4",
+      "url": "https://images.unsplash.com/photo-1477346611705-65d1883cee1e",
+      "author": "JOHN TOWNER",
+      "authorUrl": "https://unsplash.com/@heytowner?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/JgOeRuGD_Y4?utm_source=qiaomu_home&utm_medium=referral",
+      "color": "#260c26"
     },
-    "chosenOn": "2026-11-13"
+    "chosenOn": "2026-11-16"
   },
   "actions": [
     "builtin:daily",
@@ -41,7 +41,7 @@
   "homePageId": "home",
   "homeShortcutsSeeded": true,
   "shortcutFavicons": true,
-  "activePageId": "home",
+  "activePageId": "focus",
   "pages": [
     {
       "id": "home",
