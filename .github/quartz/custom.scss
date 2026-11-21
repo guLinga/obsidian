@@ -111,7 +111,17 @@ body {
   }
 }
 
+// Quartz 默认 max-width: 14rem，侧栏里撑不满
+.search {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: 100%;
+}
+
 .search > .search-button {
+  box-sizing: border-box;
+  width: 100% !important;
   height: 1.9rem !important;
   border-radius: var(--radius-sm) !important;
   border: 1px solid var(--hairline) !important;
@@ -241,14 +251,25 @@ html[saved-theme="dark"] .search > .search-button {
   }
 }
 
-// ----- 中间：阅读区（实色，避免叠半透明）-----
+// ----- 中间：阅读区（实色，正文在栏内水平居中）-----
 @media (min-width: 800px) {
   .page > #quartz-body .center {
-    padding: 1.25rem 2.75rem 3.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 2rem 3.5rem !important;
     max-width: none !important;
     border-right: 1px solid var(--hairline);
     background: var(--content-bg);
   }
+}
+
+.page > #quartz-body .center > .page-header,
+.page > #quartz-body .center > article {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .breadcrumb-container {
@@ -276,7 +297,6 @@ html[saved-theme="dark"] .search > .search-button {
 }
 
 article {
-  max-width: 42rem;
   font-size: 1.02rem;
   line-height: 1.7;
   letter-spacing: -0.003em;
