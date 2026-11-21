@@ -14,7 +14,8 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "zh-CN",
-    baseUrl: "example.github.io",
+    // GitHub Pages 项目站：用户名.github.io/仓库名（不要加 https://）
+    baseUrl: "gulinga.github.io/obsidian",
     ignorePatterns: ["private", "templates", ".obsidian", ".github"],
     defaultDateType: "modified",
     theme: {
