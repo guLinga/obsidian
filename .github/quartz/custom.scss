@@ -2,6 +2,81 @@
 // 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
 @use "./base.scss";
 
+:root {
+  --left-sidebar-width: 320px;
+}
+
+// 桌面 / 平板：左侧栏宽度用 CSS 变量，便于拖拽拉伸
+@media (min-width: 1200px) {
+  .page > #quartz-body {
+    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) 320px !important;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1199px) {
+  .page > #quartz-body {
+    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .sidebar.left {
+    position: relative;
+    min-width: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  // 右侧边缘拖拽条
+  .sidebar-resize-handle {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 20;
+    touch-action: none;
+  }
+
+  .sidebar-resize-handle:hover,
+  .sidebar-resize-handle:active {
+    background: color-mix(in srgb, var(--secondary) 35%, transparent);
+  }
+}
+
+// 左侧目录：单行显示，超出省略
+.explorer-content {
+  a,
+  .folder-container div > a,
+  .folder-container div > button,
+  .folder-container div > button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .folder-container {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .folder-container > div {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  li > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 // 右侧大纲过长时被裁切、无法滚到底：让 TOC 在视口内独立滚动
 .right.sidebar {
   max-height: 100vh;
