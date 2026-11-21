@@ -2,46 +2,28 @@
 // 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
 @use "./base.scss";
 
-:root {
-  --left-sidebar-width: 320px;
-}
-
-// 桌面 / 平板：左侧栏宽度用 CSS 变量，便于拖拽拉伸
+// 桌面 / 平板：左栏可拖拽右下角调整宽度（纯 CSS，不依赖自定义组件）
 @media (min-width: 1200px) {
   .page > #quartz-body {
-    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) 320px !important;
+    grid-template-columns: auto minmax(0, 1fr) 320px !important;
   }
 }
 
 @media (min-width: 800px) and (max-width: 1199px) {
   .page > #quartz-body {
-    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
   }
 }
 
 @media (min-width: 800px) {
   .sidebar.left {
-    position: relative;
-    min-width: 0;
-    overflow-x: hidden;
     box-sizing: border-box;
-  }
-
-  // 右侧边缘拖拽条
-  .sidebar-resize-handle {
-    position: absolute;
-    top: 0;
-    right: -3px;
-    width: 8px;
-    height: 100%;
-    cursor: col-resize;
-    z-index: 20;
-    touch-action: none;
-  }
-
-  .sidebar-resize-handle:hover,
-  .sidebar-resize-handle:active {
-    background: color-mix(in srgb, var(--secondary) 35%, transparent);
+    width: 320px;
+    min-width: 160px;
+    max-width: min(50vw, 560px);
+    // resize 需要非 visible 的 overflow
+    overflow: auto;
+    resize: horizontal;
   }
 }
 
