@@ -2,38 +2,111 @@
 // 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
 @use "./base.scss";
 
-// 隐藏页脚（含 Created with Quartz）
+// ========== Obsidian 风格布局 ==========
+
+// 隐藏页脚
 footer {
   display: none !important;
 }
 
-// 桌面 / 平板：左栏可拖拽右下角调整宽度（纯 CSS，不依赖自定义组件）
+// 全高三栏，贴近 Obsidian 工作区
+html,
+body {
+  height: 100%;
+  background: var(--light);
+}
+
+.page {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 @media (min-width: 1200px) {
   .page > #quartz-body {
-    grid-template-columns: auto minmax(0, 1fr) 320px !important;
+    grid-template-columns: auto minmax(0, 1fr) 260px !important;
+    grid-template-rows: auto 1fr !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+    min-height: 100vh;
+    max-width: none !important;
   }
 }
 
 @media (min-width: 800px) and (max-width: 1199px) {
   .page > #quartz-body {
     grid-template-columns: auto minmax(0, 1fr) !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+    min-height: 100vh;
+    max-width: none !important;
   }
 }
 
+// ----- 左栏：文件目录 -----
 @media (min-width: 800px) {
   .sidebar.left {
     box-sizing: border-box;
-    width: 320px;
-    min-width: 160px;
-    max-width: min(50vw, 560px);
-    // resize 需要非 visible 的 overflow
+    width: 280px;
+    min-width: 180px;
+    max-width: min(45vw, 420px);
     overflow: auto;
     resize: horizontal;
+    border-right: 1px solid var(--lightgray);
+    background: var(--light);
+    padding: 0.75rem 0.5rem 1.5rem !important;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    max-height: 100vh;
   }
 }
 
-// 左侧目录：单行显示，超出省略
+.page-title {
+  font-size: 0.95rem !important;
+  font-weight: 600;
+  padding: 0.35rem 0.5rem 0.75rem;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--lightgray);
+  margin-bottom: 0.5rem !important;
+
+  a {
+    color: var(--dark) !important;
+  }
+}
+
+.search > .search-button {
+  height: 1.85rem !important;
+  border-radius: 6px !important;
+  border-color: var(--lightgray) !important;
+  background: var(--lightgray) !important;
+  padding: 0 0.55rem 0 0 !important;
+  font-size: 0.85rem;
+}
+
+.darkmode,
+.readermode {
+  opacity: 0.7;
+}
+
+.explorer {
+  margin-top: 0.35rem;
+}
+
+.explorer button.desktop-explorer h2,
+.explorer button.mobile-explorer h2 {
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  color: var(--darkgray);
+  text-transform: none;
+}
+
+// 左侧目录：单行 + 省略 + Obsidian 选中态
 .explorer-content {
+  font-size: 0.875rem;
+  line-height: 1.45;
+
   a,
   .folder-container div > a,
   .folder-container div > button,
@@ -48,6 +121,8 @@ footer {
   .folder-container {
     min-width: 0;
     width: 100%;
+    border-radius: 4px;
+    padding: 0.1rem 0.25rem;
   }
 
   .folder-container > div {
@@ -56,27 +131,157 @@ footer {
     overflow: hidden;
   }
 
+  .folder-container div > a,
+  .folder-container div > button span {
+    color: var(--dark) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+  }
+
   li > a {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    margin: 0.05rem 0;
+    color: var(--darkgray) !important;
+    opacity: 1 !important;
+    background: transparent;
+  }
+
+  li > a:hover {
+    background: var(--lightgray);
+    color: var(--dark) !important;
+  }
+
+  li > a.active {
+    background: var(--lightgray) !important;
+    color: var(--dark) !important;
+    opacity: 1 !important;
+    font-weight: 500;
+  }
+
+  .folder-outer > ul {
+    border-left-color: var(--lightgray) !important;
   }
 }
 
-// 右侧大纲过长时被裁切、无法滚到底：让 TOC 在视口内独立滚动
-.right.sidebar {
-  max-height: 100vh;
-  overflow: hidden;
+// ----- 中间：阅读区 -----
+@media (min-width: 800px) {
+  .page > #quartz-body .center {
+    padding: 1rem 2.5rem 3rem !important;
+    max-width: none !important;
+    border-right: 1px solid var(--lightgray);
+    background: var(--light);
+  }
+}
+
+.breadcrumb-container {
+  margin: 0 0 0.75rem !important;
+  font-size: 0.8rem;
+  color: var(--darkgray);
+  opacity: 0.85;
+}
+
+.article-title {
+  margin: 0.25rem 0 0.5rem !important;
+  font-size: 1.65rem !important;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+}
+
+.content-meta {
+  font-size: 0.8rem !important;
+  color: var(--gray) !important;
+  margin-bottom: 1.25rem !important;
+}
+
+article {
+  max-width: 46rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--darkgray);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--dark);
+    font-weight: 650;
+    scroll-margin-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 1.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--lightgray);
+  }
+
+  h3 {
+    font-size: 1.08rem;
+  }
+
+  a {
+    color: var(--secondary);
+  }
+
+  a.internal {
+    background: var(--highlight);
+    border-radius: 4px;
+    padding: 0 0.2rem;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--secondary);
+    background: color-mix(in srgb, var(--lightgray) 65%, transparent);
+    border-radius: 0 6px 6px 0;
+    margin-left: 0;
+  }
+
+  code {
+    font-size: 0.88em;
+    border-radius: 4px;
+  }
+
+  pre {
+    border-radius: 8px;
+    border: 1px solid var(--lightgray);
+  }
+}
+
+// ----- 右栏：大纲 -----
+@media (min-width: 1200px) {
+  .sidebar.right {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    padding: 1rem 0.75rem 1.5rem !important;
+    background: var(--light);
+  }
 }
 
 .right.sidebar .toc {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  max-height: calc(100vh - 6rem);
+  max-height: calc(100vh - 2rem);
   overflow: hidden;
   flex: 1 1 auto;
+}
+
+button.toc-header h3 {
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  color: var(--darkgray);
 }
 
 ul.toc-content.overflow {
@@ -85,15 +290,56 @@ ul.toc-content.overflow {
   min-height: 0;
   overflow-y: auto !important;
   overscroll-behavior: contain;
-  padding-right: 0.35rem;
+  padding-right: 0.25rem;
   padding-bottom: 1.5rem;
+  font-size: 0.82rem;
+
+  > li > a {
+    display: block;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    margin: 0.08rem 0;
+    opacity: 0.55 !important;
+    color: var(--darkgray) !important;
+    line-height: 1.35;
+  }
+
+  > li > a:hover {
+    background: var(--lightgray);
+    opacity: 0.9 !important;
+  }
+
+  > li > a.in-view {
+    background: var(--lightgray) !important;
+    opacity: 1 !important;
+    color: var(--dark) !important;
+    font-weight: 500;
+  }
 }
 
-// 深层级标题缩进（maxDepth: 6）
 ul.toc-content.overflow > li.depth-0 { padding-left: 0; }
-ul.toc-content.overflow > li.depth-1 { padding-left: 0.75rem; }
-ul.toc-content.overflow > li.depth-2 { padding-left: 1.5rem; }
-ul.toc-content.overflow > li.depth-3 { padding-left: 2.25rem; }
-ul.toc-content.overflow > li.depth-4 { padding-left: 3rem; }
-ul.toc-content.overflow > li.depth-5 { padding-left: 3.75rem; }
-ul.toc-content.overflow > li.depth-6 { padding-left: 4.5rem; }
+ul.toc-content.overflow > li.depth-1 { padding-left: 0.65rem; }
+ul.toc-content.overflow > li.depth-2 { padding-left: 1.3rem; }
+ul.toc-content.overflow > li.depth-3 { padding-left: 1.95rem; }
+ul.toc-content.overflow > li.depth-4 { padding-left: 2.6rem; }
+ul.toc-content.overflow > li.depth-5 { padding-left: 3.25rem; }
+ul.toc-content.overflow > li.depth-6 { padding-left: 3.9rem; }
+
+.backlinks {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--lightgray);
+  font-size: 0.82rem;
+
+  > h3 {
+    font-size: 0.8rem !important;
+    color: var(--darkgray);
+  }
+}
+
+// 移动端保持可用，去掉桌面专用边框压迫感
+@media (max-width: 799px) {
+  .page > #quartz-body .center {
+    padding: 1rem 1rem 2rem !important;
+  }
+}
