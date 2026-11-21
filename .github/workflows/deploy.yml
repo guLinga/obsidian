@@ -28,6 +28,8 @@ jobs:
           page_title: "我的知识库"   # 浏览器标签页显示的标题
           # 自定义配置：大纲 maxDepth: 6 等写在这里
           quartz_config: .github/quartz/quartz.config.ts
+          # 自定义布局：去掉 Graph 等重型组件
+          quartz_layout: .github/quartz/quartz.layout.ts
           # 自定义样式：右侧大纲可完整滚动
           quartz_custom_css: .github/quartz/custom.scss
 

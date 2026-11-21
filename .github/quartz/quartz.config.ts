@@ -65,7 +65,8 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      // mermaid: false —— Mermaid 常占 JS/内联脚本约 2MB+，不用流程图就关掉
+      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false, mermaid: false }),
       Plugin.GitHubFlavoredMarkdown(),
       // 默认 maxDepth 是 3；改成 6 才能收录 ###### 标题
       Plugin.TableOfContents({
@@ -76,6 +77,7 @@ const config: QuartzConfig = {
       }),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
+      // KaTeX 约几百 KB；笔记几乎不用公式时可整行注释掉以再瘦一截
       Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],
