@@ -1,0 +1,32 @@
+// 右侧大纲过长时被裁切、无法滚到底：让 TOC 在视口内独立滚动
+
+.right.sidebar {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.right.sidebar .toc {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: calc(100vh - 6rem);
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+ul.toc-content.overflow {
+  max-height: none !important;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  padding-right: 0.35rem;
+  padding-bottom: 1.5rem;
+}
+
+// 深层级标题也能看清缩进（maxDepth: 6）
+@for $i from 0 through 6 {
+  ul.toc-content.overflow > li.depth-#{$i} {
+    padding-left: calc(0.75rem * #{$i});
+  }
+}
