@@ -256,7 +256,7 @@ html[saved-theme="dark"] .search > .search-button {
   .page > #quartz-body .center {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     padding: 1.25rem 2rem 3.5rem !important;
     max-width: none !important;
     border-right: 1px solid var(--hairline);
@@ -270,6 +270,58 @@ html[saved-theme="dark"] .search > .search-button {
   max-width: 42rem;
   margin-inline: auto;
   box-sizing: border-box;
+}
+
+// 文件夹/标签列表：中文日期比默认 8em 更宽，避免换行错位
+ul.section-ul {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding-left: 0;
+}
+
+li.section-li {
+  margin-bottom: 0.65rem;
+
+  > .section {
+    display: grid !important;
+    // 容纳「2026年11月21日」整行；标题吃剩余宽度
+    grid-template-columns: 11.5em minmax(0, 1fr) !important;
+    align-items: center;
+    column-gap: 1rem;
+    width: 100%;
+
+    > .tags {
+      display: none;
+    }
+
+    .meta {
+      margin: 0 !important;
+      opacity: 0.55;
+      white-space: nowrap;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      color: var(--darkgray);
+    }
+
+    .desc {
+      min-width: 0;
+
+      > h3 {
+        margin: 0 !important;
+        font-size: 1rem !important;
+        font-weight: 550;
+        letter-spacing: -0.01em;
+        line-height: 1.4 !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      > h3 > a {
+        background: transparent !important;
+        display: inline;
+      }
+    }
+  }
 }
 
 .breadcrumb-container {
