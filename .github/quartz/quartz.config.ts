@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "我的知识库",
+    pageTitle: "忽略不计",
     pageTitleSuffix: "",
     enableSPA: true,
     // 悬浮预览会额外拉取正文 HTML；关掉后首页更轻，点进详情才加载全文

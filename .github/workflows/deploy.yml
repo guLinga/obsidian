@@ -26,7 +26,7 @@ jobs:
           # ⬇️ 关键：改成你存放 Obsidian 笔记的文件夹路径
           source: ./
           destination: ./_site
-          page_title: "我的知识库"   # 浏览器标签页显示的标题
+          page_title: "忽略不计"   # 浏览器标签页显示的标题
           # 自定义配置：大纲 maxDepth: 6 等写在这里
           quartz_config: .github/quartz/quartz.config.ts
           # 自定义布局：去掉 Graph 等重型组件
