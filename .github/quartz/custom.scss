@@ -2,6 +2,11 @@
 // 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
 @use "./base.scss";
 
+// 隐藏页脚（含 Created with Quartz）
+footer {
+  display: none !important;
+}
+
 // 桌面 / 平板：左栏可拖拽右下角调整宽度（纯 CSS，不依赖自定义组件）
 @media (min-width: 1200px) {
   .page > #quartz-body {
