@@ -1,5 +1,8 @@
-// 右侧大纲过长时被裁切、无法滚到底：让 TOC 在视口内独立滚动
+// Quartz 的 ComponentResources 只引入 custom.scss；
+// 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
+@use "./base.scss";
 
+// 右侧大纲过长时被裁切、无法滚到底：让 TOC 在视口内独立滚动
 .right.sidebar {
   max-height: 100vh;
   overflow: hidden;
@@ -24,9 +27,11 @@ ul.toc-content.overflow {
   padding-bottom: 1.5rem;
 }
 
-// 深层级标题也能看清缩进（maxDepth: 6）
-@for $i from 0 through 6 {
-  ul.toc-content.overflow > li.depth-#{$i} {
-    padding-left: calc(0.75rem * #{$i});
-  }
-}
+// 深层级标题缩进（maxDepth: 6）
+ul.toc-content.overflow > li.depth-0 { padding-left: 0; }
+ul.toc-content.overflow > li.depth-1 { padding-left: 0.75rem; }
+ul.toc-content.overflow > li.depth-2 { padding-left: 1.5rem; }
+ul.toc-content.overflow > li.depth-3 { padding-left: 2.25rem; }
+ul.toc-content.overflow > li.depth-4 { padding-left: 3rem; }
+ul.toc-content.overflow > li.depth-5 { padding-left: 3.75rem; }
+ul.toc-content.overflow > li.depth-6 { padding-left: 4.5rem; }
