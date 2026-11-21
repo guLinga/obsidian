@@ -264,7 +264,9 @@ html[saved-theme="dark"] .search > .search-button {
   }
 }
 
+// 列表页正文在 .popover-hint 里（不是 .center > article），需一起限宽居中
 .page > #quartz-body .center > .page-header,
+.page > #quartz-body .center > .popover-hint,
 .page > #quartz-body .center > article {
   width: 100%;
   max-width: 42rem;
@@ -272,11 +274,23 @@ html[saved-theme="dark"] .search > .search-button {
   box-sizing: border-box;
 }
 
+.page > #quartz-body .center > .page-header,
+.page > #quartz-body .center > .popover-hint {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 // 文件夹/标签列表：中文日期比默认 8em 更宽，避免换行错位
+.page-listing,
 ul.section-ul {
   width: 100%;
+  box-sizing: border-box;
+}
+
+ul.section-ul {
   margin-top: 1.25rem;
-  padding-left: 0;
+  padding-left: 0 !important;
+  list-style: none;
 }
 
 li.section-li {
@@ -326,10 +340,30 @@ li.section-li {
 
 .breadcrumb-container {
   margin: 0 0 0.85rem !important;
+  padding: 0 !important;
   font-size: 0.78rem;
   letter-spacing: 0.01em;
   color: var(--gray);
   line-height: 1.35;
+  gap: 0.35rem !important;
+}
+
+// Quartz 默认给面包屑里的 p 加了 margin-left，首项会缩进
+.breadcrumb-element {
+  justify-content: flex-start !important;
+
+  p {
+    margin: 0 !important;
+  }
+
+  a {
+    margin: 0 !important;
+  }
+}
+
+.breadcrumb-element:first-child p,
+.breadcrumb-element:first-child a {
+  margin-left: 0 !important;
 }
 
 .article-title {
