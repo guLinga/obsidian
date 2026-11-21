@@ -11,7 +11,8 @@ const config: QuartzConfig = {
     pageTitle: "我的知识库",
     pageTitleSuffix: "",
     enableSPA: true,
-    enablePopovers: true,
+    // 悬浮预览会额外拉取正文 HTML；关掉后首页更轻，点进详情才加载全文
+    enablePopovers: false,
     analytics: null,
     locale: "zh-CN",
     // GitHub Pages 项目站：用户名.github.io/仓库名（不要加 https://）

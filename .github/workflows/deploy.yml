@@ -25,6 +25,7 @@ jobs:
         with:
           # ⬇️ 关键：改成你存放 Obsidian 笔记的文件夹路径
           source: ./
+          destination: _site
           page_title: "我的知识库"   # 浏览器标签页显示的标题
           # 自定义配置：大纲 maxDepth: 6 等写在这里
           quartz_config: .github/quartz/quartz.config.ts
@@ -33,8 +34,17 @@ jobs:
           # 自定义样式：右侧大纲可完整滚动
           quartz_custom_css: .github/quartz/custom.scss
 
+      # 去掉 contentIndex 全文：首屏只留标题索引，正文在各详情页 HTML
+      - name: Slim contentIndex.json
+        run: |
+          set -e
+          find . -name 'contentIndex.json' 2>/dev/null | head -n 20 || true
+          node .github/quartz/slim-content-index.mjs
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
   deploy:
     runs-on: ubuntu-latest
