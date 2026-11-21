@@ -25,7 +25,7 @@ jobs:
         with:
           # ⬇️ 关键：改成你存放 Obsidian 笔记的文件夹路径
           source: ./
-          destination: _site
+          destination: ./_site
           page_title: "我的知识库"   # 浏览器标签页显示的标题
           # 自定义配置：大纲 maxDepth: 6 等写在这里
           quartz_config: .github/quartz/quartz.config.ts
@@ -34,12 +34,46 @@ jobs:
           # 自定义样式：右侧大纲可完整滚动
           quartz_custom_css: .github/quartz/custom.scss
 
-      # 去掉 contentIndex 全文：首屏只留标题索引，正文在各详情页 HTML
+      # Docker action 产物常为 root 所有，先改权限再瘦身索引
       - name: Slim contentIndex.json
         run: |
-          set -e
-          find . -name 'contentIndex.json' 2>/dev/null | head -n 20 || true
-          node .github/quartz/slim-content-index.mjs
+          set -euo pipefail
+          sudo chown -R "$USER:$USER" _site || true
+          echo "workspace:"; ls -la
+          echo "_site:"; ls -la _site || true
+          echo "_site/static:"; ls -la _site/static || true
+
+          python3 <<'PY'
+          import json, os, sys
+          from pathlib import Path
+
+          candidates = [
+              Path("_site/static/contentIndex.json"),
+              Path("static/contentIndex.json"),
+              Path("public/static/contentIndex.json"),
+          ]
+          found = next((p for p in candidates if p.is_file()), None)
+          if found is None:
+              for p in Path(".").rglob("contentIndex.json"):
+                  found = p
+                  break
+          if found is None:
+              print("ERROR: contentIndex.json not found", file=sys.stderr)
+              sys.exit(1)
+
+          before = found.stat().st_size
+          data = json.loads(found.read_text(encoding="utf-8"))
+          n = 0
+          for entry in data.values():
+              if not isinstance(entry, dict):
+                  continue
+              n += 1
+              entry.pop("content", None)
+              entry.pop("richContent", None)
+          found.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+          after = found.stat().st_size
+          print(f"slimmed {found}: {n} entries, {before/1024/1024:.2f}MB -> {after/1024/1024:.2f}MB")
+          PY
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
