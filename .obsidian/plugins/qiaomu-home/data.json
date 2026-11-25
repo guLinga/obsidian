@@ -19,14 +19,14 @@
     "localChosenOn": "",
     "localSelectionKey": "",
     "current": {
-      "id": "curated:xyCpmrP_0Qo",
-      "url": "https://images.unsplash.com/photo-1684581159337-6434c3ca59be",
-      "author": "Chris wu",
-      "authorUrl": "https://unsplash.com/@chrisjorwu?utm_source=qiaomu_home&utm_medium=referral",
-      "page": "https://unsplash.com/photos/xyCpmrP_0Qo?utm_source=qiaomu_home&utm_medium=referral",
-      "color": "#262626"
+      "id": "curated:1c33ba-uh_8",
+      "url": "https://images.unsplash.com/photo-1547327132-5d20850c62b5",
+      "author": "Anthony Da Cruz",
+      "authorUrl": "https://unsplash.com/@akhu?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/1c33ba-uh_8?utm_source=qiaomu_home&utm_medium=referral",
+      "color": "#8c8cc0"
     },
-    "chosenOn": "2026-11-18"
+    "chosenOn": "2026-11-25"
   },
   "actions": [
     "builtin:daily",
