@@ -464,13 +464,24 @@ li.section-li {
   }
 }
 
-// 分隔符 ❯ 更淡、更小，和路径融为一体
+// 分隔符：字体里的 ❯ 字形偏小、基线偏低，和路径文字对不齐。
+// 改成固定 9px 的 chevron 图标（和左栏文件树同一枚），随 flex 垂直居中。
 .breadcrumb-container > p,
 .breadcrumb-element > p:not(:only-child) {
-  font-size: 0.65rem;
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  margin: 0 0.12rem !important;
+  font-size: 0 !important;
+  line-height: 0;
+  color: transparent !important;
   opacity: 0.45;
-  color: var(--gray) !important;
-  transform: scale(0.9);
+  background-color: var(--gray);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
+    center / 9px 9px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
+    center / 9px 9px no-repeat;
+  transform: rotate(-90deg);
 }
 
 .article-title {
@@ -592,12 +603,33 @@ html[saved-theme="dark"] article blockquote {
   flex: 1 1 auto;
 }
 
+// 目录标题：默认 24px/2px 的大箭头比 11.5px 小标题重得多，缩到 13px 才同一视觉重量
+button.toc-header {
+  align-items: center;
+  gap: 0.35rem;
+  padding-bottom: 0.4rem;
+}
+
 button.toc-header h3 {
   font-size: 0.72rem !important;
   font-weight: 650;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--gray);
+}
+
+button.toc-header .fold {
+  width: 13px !important;
+  height: 13px !important;
+  margin-left: 0 !important;
+  opacity: 0.45 !important;
+  transition:
+    opacity var(--duration-ui) var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+button.toc-header:hover .fold {
+  opacity: 0.7 !important;
 }
 
 ul.toc-content.overflow {
