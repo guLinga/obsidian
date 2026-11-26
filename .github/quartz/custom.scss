@@ -187,7 +187,10 @@ html[saved-theme="dark"] .search > .search-button {
     min-width: 0;
     width: 100%;
     border-radius: var(--radius-sm);
-    padding: 0.12rem 0.3rem;
+    padding: 0.12rem 0.15rem 0.12rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
   }
 
   .folder-container > div {
@@ -196,11 +199,45 @@ html[saved-theme="dark"] .search > .search-button {
     overflow: hidden;
   }
 
+  // 折叠箭头：缩小、弱化，和文字同一视觉层
+  .folder-container > svg,
+  .folder-container button svg,
+  .folder-icon,
+  button.folder-button svg {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px;
+    opacity: 0.35;
+    color: var(--darkgray);
+    stroke: var(--darkgray);
+    flex-shrink: 0;
+    transition: opacity var(--duration-ui) var(--ease-out), transform var(--duration-ui) var(--ease-out);
+  }
+
+  .folder-container:hover > svg,
+  .folder-container:hover button svg,
+  .folder-container:hover .folder-icon {
+    opacity: 0.65;
+  }
+
   .folder-container div > a,
   .folder-container div > button span {
     color: var(--dark) !important;
     font-weight: 550 !important;
     font-size: 0.875rem !important;
+  }
+
+  // 文件夹名不要用强调蓝，和笔记同一色系
+  .folder-container div > a:hover,
+  .folder-container div > button:hover span {
+    color: var(--dark) !important;
+    opacity: 0.75;
+  }
+
+  .folder-icon {
+    margin-right: 0.25rem !important;
+    color: var(--darkgray) !important;
+    opacity: 0.4;
   }
 
   li > a {
@@ -231,8 +268,16 @@ html[saved-theme="dark"] .search > .search-button {
     font-weight: 550;
   }
 
+  // 去掉树形竖线，减少「箭头列」和文字的割裂感
+  .folder-outer {
+    margin-left: 0.35rem !important;
+    padding-left: 0.55rem !important;
+  }
+
   .folder-outer > ul {
-    border-left-color: var(--hairline) !important;
+    border-left: none !important;
+    margin-left: 0 !important;
+    padding-left: 0.15rem !important;
   }
 }
 
@@ -338,32 +383,55 @@ li.section-li {
   }
 }
 
+// 面包屑：弱化成路径提示，颜色贴近元信息，避免蓝链跳戏
 .breadcrumb-container {
-  margin: 0 0 0.85rem !important;
+  margin: 0 0 0.55rem !important;
   padding: 0 !important;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.01em;
   color: var(--gray);
   line-height: 1.35;
-  gap: 0.35rem !important;
+  gap: 0.2rem !important;
+  align-items: center;
 }
 
-// Quartz 默认给面包屑里的 p 加了 margin-left，首项会缩进
 .breadcrumb-element {
   justify-content: flex-start !important;
+  color: var(--gray) !important;
 
   p {
     margin: 0 !important;
+    color: var(--gray) !important;
+    opacity: 0.7;
   }
 
   a {
     margin: 0 !important;
+    color: var(--gray) !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    transition: color var(--duration-ui) var(--ease-out);
   }
 }
 
 .breadcrumb-element:first-child p,
 .breadcrumb-element:first-child a {
   margin-left: 0 !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .breadcrumb-element a:hover {
+    color: var(--dark) !important;
+  }
+}
+
+// 分隔符 ❯ 更淡、更小，和路径融为一体
+.breadcrumb-container > p,
+.breadcrumb-element > p:not(:only-child) {
+  font-size: 0.65rem;
+  opacity: 0.45;
+  color: var(--gray) !important;
+  transform: scale(0.9);
 }
 
 .article-title {
