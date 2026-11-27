@@ -1,77 +1,12 @@
-// Quartz 的 ComponentResources 只引入 custom.scss；
-// 默认 custom.scss 里必须先引入 base.scss，否则整站布局会全丢。
-@use "./base.scss";
+// Quartz 5 custom overrides — Minimal 主题之上的少量布局修补
+@use "./variables.scss" as *;
 
-// ========== Apple Design + Emil Design Eng ==========
-// 三栏 Obsidian 布局 + 材质/字体/反馈/克制动效
-
-:root {
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --duration-press: 140ms;
-  --duration-ui: 200ms;
-  --duration-panel: 280ms;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
-    "Hiragino Sans GB", "Noto Sans SC", "Segoe UI", system-ui, sans-serif;
-  --sidebar-bg: rgba(245, 245, 247, 0.72);
-  --sidebar-bg-solid: #f5f5f7;
-  --content-bg: #ffffff;
-  --hairline: rgba(0, 0, 0, 0.08);
-  --pressable: scale(0.97);
-}
-
-html[saved-theme="dark"] {
-  --sidebar-bg: rgba(28, 28, 30, 0.72);
-  --sidebar-bg-solid: #1c1c1e;
-  --content-bg: #000000;
-  --hairline: rgba(255, 255, 255, 0.1);
-}
-
+// 页脚（YAML 已关；双保险）
 footer {
   display: none !important;
 }
 
-html,
-body {
-  height: 100%;
-  background: var(--content-bg);
-  font-family: var(--font-ui) !important;
-  font-optical-sizing: auto;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-.page {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-family: var(--font-ui) !important;
-}
-
-@media (min-width: 1200px) {
-  .page > #quartz-body {
-    grid-template-columns: auto minmax(0, 1fr) 260px !important;
-    grid-template-rows: auto 1fr !important;
-    column-gap: 0 !important;
-    row-gap: 0 !important;
-    min-height: 100vh;
-    max-width: none !important;
-  }
-}
-
-@media (min-width: 800px) and (max-width: 1199px) {
-  .page > #quartz-body {
-    grid-template-columns: auto minmax(0, 1fr) !important;
-    column-gap: 0 !important;
-    row-gap: 0 !important;
-    min-height: 100vh;
-    max-width: none !important;
-  }
-}
-
-// ----- 左栏：更重材质（结构层）-----
+// ----- 左栏：可拖拽宽度 + 标题省略 -----
 @media (min-width: 800px) {
   .sidebar.left {
     box-sizing: border-box;
@@ -80,38 +15,9 @@ body {
     max-width: min(45vw, 420px);
     overflow: auto;
     resize: horizontal;
-    border-right: 1px solid var(--hairline);
-    background: var(--sidebar-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    padding: 0.85rem 0.55rem 1.5rem !important;
-    position: sticky;
-    top: 0;
-    align-self: start;
-    height: 100vh;
-    max-height: 100vh;
-    transition:
-      opacity var(--duration-panel) var(--ease-out),
-      width var(--duration-panel) var(--ease-out);
   }
 }
 
-.page-title {
-  font-size: 0.95rem !important;
-  font-weight: 650;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  padding: 0.4rem 0.55rem 0.85rem;
-  margin: 0 0 0.45rem !important;
-  // 滚动边缘渐隐感：轻分隔而非硬线堆叠
-  box-shadow: 0 1px 0 var(--hairline);
-
-  a {
-    color: var(--dark) !important;
-  }
-}
-
-// Quartz 默认 max-width: 14rem，侧栏里撑不满
 .search {
   flex: 1 1 auto !important;
   min-width: 0 !important;
@@ -122,58 +28,9 @@ body {
 .search > .search-button {
   box-sizing: border-box;
   width: 100% !important;
-  height: 1.9rem !important;
-  border-radius: var(--radius-sm) !important;
-  border: 1px solid var(--hairline) !important;
-  background: rgba(255, 255, 255, 0.55) !important;
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  padding: 0 0.55rem 0 0 !important;
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-  transition:
-    transform var(--duration-press) var(--ease-out),
-    background var(--duration-ui) var(--ease-out),
-    border-color var(--duration-ui) var(--ease-out);
-
-  &:active {
-    transform: var(--pressable);
-  }
-}
-
-html[saved-theme="dark"] .search > .search-button {
-  background: rgba(44, 44, 46, 0.7) !important;
-}
-
-.darkmode {
-  opacity: 0.78;
-  transition: opacity var(--duration-ui) var(--ease-out), transform var(--duration-press) var(--ease-out);
-
-  &:active {
-    transform: var(--pressable);
-  }
-}
-
-.explorer {
-  margin-top: 0.4rem;
-}
-
-.explorer button.desktop-explorer h2,
-.explorer button.mobile-explorer h2 {
-  font-size: 0.72rem !important;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  color: var(--gray);
-  text-transform: uppercase;
 }
 
 .explorer-content {
-  --explorer-row-h: 1.75rem;
-  --explorer-icon: 14px;
-  font-size: 0.875rem;
-  line-height: 1.35;
-  letter-spacing: 0.005em;
-
   a,
   .folder-container div > a,
   .folder-container div > button,
@@ -185,161 +42,38 @@ html[saved-theme="dark"] .search > .search-button {
     max-width: 100%;
   }
 
-  // 箭头固定槽位，文字左缘对齐
   .folder-container {
-    box-sizing: border-box;
     min-width: 0;
     width: 100%;
-    min-height: var(--explorer-row-h);
-    border-radius: var(--radius-sm);
-    padding: 0 0.35rem 0 0;
-    display: flex;
-    align-items: center;
-    gap: 0;
   }
 
   .folder-container > div {
     min-width: 0;
     flex: 1 1 auto;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    min-height: var(--explorer-row-h);
   }
 
-  // Quartz 自带 viewBox 被裁过，展开/收起旋转后箭头大小不一致。换成同一枚 chevron。
-  .folder-container > svg,
-  .folder-container button svg,
-  .folder-icon,
-  button.folder-button svg {
-    box-sizing: content-box;
-    width: var(--explorer-icon) !important;
-    height: var(--explorer-icon) !important;
-    min-width: var(--explorer-icon) !important;
-    max-width: var(--explorer-icon) !important;
-    padding: 0;
-    margin: 0 0.35rem 0 0 !important;
-    flex-shrink: 0;
-    display: block;
-    overflow: visible;
-    color: transparent !important;
-    stroke: transparent !important;
-    background-color: var(--darkgray);
-    opacity: 0.55 !important;
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
-      center / 12px 12px no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
-      center / 12px 12px no-repeat;
-    transition: opacity var(--duration-ui) var(--ease-out);
-  }
-
-  .folder-icon polyline {
-    display: none;
-  }
-
-  .folder-container:hover > svg,
-  .folder-container:hover button svg,
-  .folder-container:hover .folder-icon {
-    opacity: 0.7 !important;
-  }
-
-  .folder-container div > a,
-  .folder-container div > button,
-  .folder-container div > button span {
-    color: var(--dark) !important;
-    font-weight: 500 !important;
-    font-size: 0.875rem !important;
-    line-height: var(--explorer-row-h) !important;
-    margin: 0 !important;
-  }
-
-  .folder-container div > a:hover,
-  .folder-container div > button:hover span {
-    color: var(--dark) !important;
-    opacity: 0.7;
-  }
-
-  .folder-icon {
-    color: var(--darkgray) !important;
-  }
-
-  // 文件行不再自己留箭头空位，缩进交给父级，文字才能和文件夹名对齐
   li > a {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    min-height: var(--explorer-row-h);
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: var(--radius-sm);
-    padding: 0 0.4rem;
-    margin: 0.02rem 0;
-    color: var(--darkgray) !important;
-    opacity: 1 !important;
-    background: transparent;
-    font-size: 0.875rem;
-    line-height: 1.35;
-    transition:
-      background var(--duration-ui) var(--ease-out),
-      color var(--duration-ui) var(--ease-out);
-  }
-
-  li > a:active {
-    transform: none;
-  }
-
-  li > a.active {
-    background: rgba(0, 0, 0, 0.06) !important;
-    color: var(--dark) !important;
-    opacity: 1 !important;
-    font-weight: 550;
-  }
-
-  .folder-outer {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
   }
 
   .folder-outer > ul {
-    border-left: none !important;
-    margin-left: 0 !important;
-    // 与文件夹名左缘对齐：箭头宽 + 箭头右边距
-    padding-left: calc(var(--explorer-icon) + 0.35rem) !important;
+    border-left-color: var(--lightgray, #e8e8ed);
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .explorer-content li > a:hover {
-    background: rgba(0, 0, 0, 0.04);
-    color: var(--dark) !important;
-  }
-
-  html[saved-theme="dark"] .explorer-content li > a:hover {
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  html[saved-theme="dark"] .explorer-content li > a.active {
-    background: rgba(255, 255, 255, 0.1) !important;
-  }
-}
-
-// ----- 中间：阅读区（实色，正文在栏内水平居中）-----
+// ----- 中栏：正文限宽居中 -----
 @media (min-width: 800px) {
   .page > #quartz-body .center {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 1.25rem 2rem 3.5rem !important;
-    max-width: none !important;
-    border-right: 1px solid var(--hairline);
-    background: var(--content-bg);
   }
 }
 
-// 列表页正文在 .popover-hint 里（不是 .center > article），需一起限宽居中
 .page > #quartz-body .center > .page-header,
 .page > #quartz-body .center > .popover-hint,
 .page > #quartz-body .center > article {
@@ -349,13 +83,7 @@ html[saved-theme="dark"] .search > .search-button {
   box-sizing: border-box;
 }
 
-.page > #quartz-body .center > .page-header,
-.page > #quartz-body .center > .popover-hint {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-// 文件夹/标签列表：中文日期比默认 8em 更宽，避免换行错位
+// 文件夹列表：中文日期列宽
 .page-listing,
 ul.section-ul {
   width: 100%;
@@ -363,234 +91,46 @@ ul.section-ul {
 }
 
 ul.section-ul {
-  margin-top: 1.25rem;
-  padding-left: 0 !important;
   list-style: none;
+  padding-left: 0 !important;
 }
 
-li.section-li {
-  margin-bottom: 0.65rem;
-
-  > .section {
-    display: grid !important;
-    // 容纳「2026年11月21日」整行；标题吃剩余宽度
-    grid-template-columns: 11.5em minmax(0, 1fr) !important;
-    align-items: center;
-    column-gap: 1rem;
-    width: 100%;
-
-    > .tags {
-      display: none;
-    }
-
-    .meta {
-      margin: 0 !important;
-      opacity: 0.55;
-      white-space: nowrap;
-      font-size: 0.88rem;
-      line-height: 1.4;
-      color: var(--darkgray);
-    }
-
-    .desc {
-      min-width: 0;
-
-      > h3 {
-        margin: 0 !important;
-        font-size: 1rem !important;
-        font-weight: 550;
-        letter-spacing: -0.01em;
-        line-height: 1.4 !important;
-        border: none !important;
-        padding: 0 !important;
-      }
-
-      > h3 > a {
-        background: transparent !important;
-        display: inline;
-      }
-    }
-  }
-}
-
-// 面包屑：弱化成路径提示，颜色贴近元信息，避免蓝链跳戏
-.breadcrumb-container {
-  margin: 0 0 0.35rem !important;
-  padding: 0 !important;
-  font-size: 0.75rem;
-  letter-spacing: 0.01em;
-  color: var(--gray);
-  line-height: 1.35;
-  gap: 0.15rem !important;
+li.section-li > .section {
+  display: grid !important;
+  grid-template-columns: 11.5em minmax(0, 1fr) !important;
   align-items: center;
-}
+  column-gap: 1rem;
+  width: 100%;
 
-// 当前页和标题重复，路径只保留上级
-.breadcrumb-element:last-child {
-  display: none;
-}
+  > .tags {
+    display: none;
+  }
 
-.breadcrumb-element:nth-last-child(2) > p {
-  display: none;
-}
-
-.breadcrumb-element {
-  justify-content: flex-start !important;
-  color: var(--gray) !important;
-
-  p {
+  .meta {
     margin: 0 !important;
-    color: var(--gray) !important;
-    opacity: 0.7;
+    white-space: nowrap;
   }
 
-  a {
-    margin: 0 !important;
-    color: var(--gray) !important;
-    background: transparent !important;
-    text-decoration: none !important;
-    transition: color var(--duration-ui) var(--ease-out);
-  }
-}
+  .desc {
+    min-width: 0;
 
-.breadcrumb-element:first-child p,
-.breadcrumb-element:first-child a {
-  margin-left: 0 !important;
-}
+    > h3 {
+      margin: 0 !important;
+      border: none !important;
+      padding: 0 !important;
+    }
 
-@media (hover: hover) and (pointer: fine) {
-  .breadcrumb-element a:hover {
-    color: var(--dark) !important;
+    > h3 > a {
+      background: transparent !important;
+    }
   }
 }
 
-// 分隔符：字体里的 ❯ 字形偏小、基线偏低，和路径文字对不齐。
-// 改成固定 9px 的 chevron 图标（和左栏文件树同一枚），随 flex 垂直居中。
-.breadcrumb-container > p,
-.breadcrumb-element > p:not(:only-child) {
-  flex: 0 0 9px;
-  width: 9px;
-  height: 9px;
-  margin: 0 0.12rem !important;
-  font-size: 0 !important;
-  line-height: 0;
-  color: transparent !important;
-  opacity: 0.45;
-  background-color: var(--gray);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
-    center / 9px 9px no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 5.7a.9.9 0 0 1 1.27-.05L8 8.7l3.33-3.05a.9.9 0 1 1 1.22 1.32l-3.94 3.6a.9.9 0 0 1-1.22 0l-3.94-3.6a.9.9 0 0 1-.05-1.27z'/%3E%3C/svg%3E")
-    center / 9px 9px no-repeat;
-  transform: rotate(-90deg);
-}
-
-.article-title {
-  margin: 0.15rem 0 0.45rem !important;
-  font-size: clamp(1.45rem, 2.2vw, 1.85rem) !important;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  color: var(--dark);
-}
-
-.content-meta {
-  font-size: 0.78rem !important;
-  letter-spacing: 0.01em;
-  color: var(--gray) !important;
-  margin-bottom: 1.35rem !important;
-}
-
-article {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  letter-spacing: -0.003em;
-  color: var(--darkgray);
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--dark);
-    font-weight: 650;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    scroll-margin-top: 1rem;
-  }
-
-  h2 {
-    font-size: 1.28rem;
-    margin-top: 2rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    letter-spacing: -0.015em;
-  }
-
-  p {
-    margin: 0.85em 0;
-  }
-
-  a {
-    color: var(--secondary);
-    text-underline-offset: 0.15em;
-    transition: opacity var(--duration-ui) var(--ease-out);
-  }
-
-  a:active {
-    opacity: 0.7;
-  }
-
-  a.internal {
-    background: var(--highlight);
-    border-radius: 4px;
-    padding: 0.05rem 0.25rem;
-    text-decoration: none;
-  }
-
-  blockquote {
-    border-left: 3px solid var(--secondary);
-    background: rgba(0, 0, 0, 0.025);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin-left: 0;
-    padding: 0.65rem 1rem;
-  }
-
-  code {
-    font-size: 0.88em;
-    border-radius: 4px;
-    letter-spacing: 0;
-  }
-
-  pre {
-    border-radius: var(--radius-md);
-    border: 1px solid var(--hairline);
-    background: var(--sidebar-bg-solid);
-  }
-}
-
-html[saved-theme="dark"] article blockquote {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-// ----- 右栏：大纲（同材质，更轻）-----
+// ----- 右栏：大纲可滚到底 -----
 @media (min-width: 1200px) {
   .sidebar.right {
-    position: sticky;
-    top: 0;
-    align-self: start;
-    height: 100vh;
     max-height: 100vh;
     overflow: hidden;
-    padding: 1.1rem 0.7rem 1.5rem !important;
-    background: var(--sidebar-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    transition: opacity var(--duration-panel) var(--ease-out);
   }
 }
 
@@ -603,88 +143,13 @@ html[saved-theme="dark"] article blockquote {
   flex: 1 1 auto;
 }
 
-// 目录标题：默认 24px/2px 的大箭头比 11.5px 小标题重得多，缩到 13px 才同一视觉重量
-button.toc-header {
-  align-items: center;
-  gap: 0.35rem;
-  padding-bottom: 0.4rem;
-}
-
-button.toc-header h3 {
-  font-size: 0.72rem !important;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-button.toc-header .fold {
-  width: 13px !important;
-  height: 13px !important;
-  margin-left: 0 !important;
-  opacity: 0.45 !important;
-  transition:
-    opacity var(--duration-ui) var(--ease-out),
-    transform 0.3s var(--ease-out);
-}
-
-button.toc-header:hover .fold {
-  opacity: 0.7 !important;
-}
-
 ul.toc-content.overflow {
   max-height: none !important;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto !important;
   overscroll-behavior: contain;
-  padding: 0.15rem 0 1.5rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.005em;
-  border: none;
-  margin: 0;
-
-  > li > a {
-    display: block;
-    border: none;
-    border-radius: 0;
-    margin: 0;
-    padding: 0.22rem 0.15rem;
-    background: transparent !important;
-    opacity: 1 !important;
-    color: var(--gray) !important;
-    font-weight: 400;
-    line-height: 1.45;
-    transition: color var(--duration-ui) var(--ease-out);
-  }
-
-  > li > a:active {
-    transform: none;
-  }
-
-  // 视口里常有多个标题同时 in-view，只强调最后一个，避免一排灰块
-  > li > a.in-view {
-    background: transparent !important;
-    color: var(--gray) !important;
-    font-weight: 400;
-  }
-
-  > li:has(> a.in-view):not(:has(~ li > a.in-view)) > a.in-view {
-    color: var(--dark) !important;
-    font-weight: 600;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  ul.toc-content.overflow > li > a:hover {
-    background: transparent !important;
-    color: var(--dark) !important;
-  }
-
-  html[saved-theme="dark"] ul.toc-content.overflow > li > a.in-view {
-    border-left-color: var(--dark) !important;
-    background: transparent !important;
-  }
+  padding-bottom: 1.5rem;
 }
 
 ul.toc-content.overflow > li.depth-0 { padding-left: 0; }
@@ -695,69 +160,11 @@ ul.toc-content.overflow > li.depth-4 { padding-left: 2.6rem; }
 ul.toc-content.overflow > li.depth-5 { padding-left: 3.25rem; }
 ul.toc-content.overflow > li.depth-6 { padding-left: 3.9rem; }
 
-.backlinks {
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid var(--hairline);
-  font-size: 0.8rem;
-
-  > h3 {
-    font-size: 0.72rem !important;
-    font-weight: 650;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
+// 面包屑：弱化当前页重复标题
+.breadcrumb-element:last-child {
+  display: none;
 }
 
-@media (max-width: 799px) {
-  .page > #quartz-body .center {
-    padding: 1rem 1rem 2rem !important;
-  }
-
-  .sidebar.left,
-  .sidebar.right {
-    background: var(--sidebar-bg-solid);
-    backdrop-filter: none;
-  }
-}
-
-// ----- 无障碍：减弱动效 / 减弱透明 -----
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-
-  .darkmode:active,
-  .explorer-content li > a:active,
-  ul.toc-content.overflow > li > a:active,
-  .search > .search-button:active {
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .sidebar.left,
-  .sidebar.right,
-  .search > .search-button {
-    background: var(--sidebar-bg-solid) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-}
-
-@media (prefers-contrast: more) {
-  .sidebar.left,
-  .sidebar.right {
-    background: var(--sidebar-bg-solid) !important;
-    border-color: var(--darkgray) !important;
-  }
-
-  .explorer-content li > a.active,
-  ul.toc-content.overflow > li > a.in-view {
-    outline: 1px solid var(--dark);
-  }
+.breadcrumb-element:nth-last-child(2) > p {
+  display: none;
 }

@@ -2,55 +2,80 @@ name: Build Quartz Site
 
 on:
   push:
-    branches: ["main"]   # 如果你的默认分支是 master，改成 master
-  workflow_dispatch:      # 允许在 Actions 页面手动触发
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
-  id-token: write         # 部署 Pages 所需的令牌权限
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout vault
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Quartz
-        uses: konstfish/quartz-build-action@v7
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          # ⬇️ 关键：改成你存放 Obsidian 笔记的文件夹路径
-          source: ./
-          destination: ./_site
-          page_title: "忽略不计"   # 浏览器标签页显示的标题
-          # 自定义配置：大纲 maxDepth: 6 等写在这里
-          quartz_config: .github/quartz/quartz.config.ts
-          # 自定义布局：去掉 Graph 等重型组件
-          quartz_layout: .github/quartz/quartz.layout.ts
-          # 自定义样式：右侧大纲可完整滚动
-          quartz_custom_css: .github/quartz/custom.scss
+          node-version: "22"
 
-      # Docker action 产物常为 root 所有，先改权限再瘦身索引
+      - name: Clone Quartz 5.2.2
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch v5.2.2 https://github.com/jackyzha0/quartz.git "$RUNNER_TEMP/quartz"
+
+      - name: Install Quartz dependencies
+        working-directory: ${{ runner.temp }}/quartz
+        run: npm ci
+
+      - name: Prepare content and config
+        run: |
+          set -euo pipefail
+          Q="$RUNNER_TEMP/quartz"
+          rm -rf "$Q/content"
+          mkdir -p "$Q/content"
+
+          # 复制笔记（排除仓库元数据与构建配置）
+          rsync -a \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.obsidian/' \
+            --exclude '.claudian/' \
+            --exclude '.copilot/' \
+            --exclude 'node_modules/' \
+            --exclude '_site/' \
+            --exclude '.DS_Store' \
+            ./ "$Q/content/"
+
+          cp .github/quartz/quartz.config.yaml "$Q/quartz.config.yaml"
+          cp .github/quartz/custom.scss "$Q/quartz/styles/custom.scss"
+
+      - name: Build Quartz
+        working-directory: ${{ runner.temp }}/quartz
+        run: npx quartz build --config quartz.config.yaml -o "$GITHUB_WORKSPACE/_site" -v
+
       - name: Slim contentIndex.json
         run: |
           set -euo pipefail
-          sudo chown -R "$USER:$USER" _site || true
-          echo "workspace:"; ls -la
-          echo "_site:"; ls -la _site || true
-          echo "_site/static:"; ls -la _site/static || true
-
           python3 <<'PY'
-          import json, os, sys
+          import json, sys
           from pathlib import Path
 
           candidates = [
               Path("_site/static/contentIndex.json"),
               Path("static/contentIndex.json"),
-              Path("public/static/contentIndex.json"),
           ]
           found = next((p for p in candidates if p.is_file()), None)
           if found is None:
