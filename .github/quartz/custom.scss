@@ -103,6 +103,7 @@ html.is-resizing-sidebar * {
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
+  display: block;
 }
 
 .explorer-content .folder-title {
