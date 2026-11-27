@@ -1,10 +1,10 @@
-# Quartz 5 — 忽略不计
+# Quartz 5 — 忽略不计（默认布局与主题）
 # schema 在构建机的 Quartz 仓库内；本地编辑器可忽略 $schema 警告
 configuration:
   pageTitle: 忽略不计
   pageTitleSuffix: ""
   enableSPA: true
-  enablePopovers: false
+  enablePopovers: true
   prefetch: viewport
   analytics: null
   locale: zh-CN
@@ -19,29 +19,29 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Noto Sans SC
-      body: Noto Sans SC
+      header: Schibsted Grotesk
+      body: Source Sans Pro
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#ffffff"
-        lightgray: "#e8e8ed"
-        gray: "#86868b"
-        darkgray: "#6e6e73"
-        dark: "#1d1d1f"
-        secondary: "#0071e3"
-        tertiary: "#2997ff"
-        highlight: rgba(0, 113, 227, 0.1)
+        light: "#faf8f8"
+        lightgray: "#e5e5e5"
+        gray: "#b8b8b8"
+        darkgray: "#4e4e4e"
+        dark: "#2b2b2b"
+        secondary: "#284b63"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#fff23688"
       darkMode:
-        light: "#000000"
-        lightgray: "#1c1c1e"
-        gray: "#8e8e93"
-        darkgray: "#aeaeb2"
-        dark: "#f5f5f7"
-        secondary: "#0a84ff"
-        tertiary: "#64d2ff"
-        highlight: rgba(10, 132, 255, 0.18)
+        light: "#161618"
+        lightgray: "#393639"
+        gray: "#646464"
+        darkgray: "#d4d4d4"
+        dark: "#ebebec"
+        secondary: "#7b97aa"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
   links:
     markdownLinkResolution: shortest
@@ -78,16 +78,10 @@ plugins:
     options:
       enableInHtmlEmbed: false
       enableCheckbox: true
-      mermaid: false
     order: 40
 
   - source: "@quartz-community/table-of-contents"
     enabled: true
-    options:
-      maxDepth: 6
-      minEntries: 1
-      showByDefault: true
-      collapseByDefault: false
     order: 50
     layout:
       position: right
@@ -98,7 +92,7 @@ plugins:
     order: 70
 
   - source: "@quartz-community/latex"
-    enabled: false
+    enabled: true
     options:
       renderEngine: katex
     order: 80
@@ -115,11 +109,10 @@ plugins:
     enabled: false
     order: 92
 
-  # Minimal 叠在 Quartz 布局上观感偏糙；改回自研样式
   - source: "@quartz-themes/core"
     enabled: false
     options:
-      theme: Minimal
+      theme: Tokyo Night
       mode: both
 
   - source: "@quartz-community/explicit-publish"
@@ -132,7 +125,7 @@ plugins:
     enabled: true
 
   - source: "@quartz-community/og-image"
-    enabled: false
+    enabled: true
 
   - source: "@quartz-community/cname"
     enabled: false
@@ -156,7 +149,7 @@ plugins:
       priority: 50
 
   - source: "@quartz-community/graph"
-    enabled: false
+    enabled: true
     layout:
       position: right
       priority: 10
@@ -189,7 +182,7 @@ plugins:
       priority: 20
 
   - source: "@quartz-community/tag-list"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 30
@@ -208,7 +201,7 @@ plugins:
       group: toolbar
 
   - source: "@quartz-community/reader-mode"
-    enabled: false
+    enabled: true
     layout:
       position: left
       priority: 35
@@ -223,9 +216,15 @@ plugins:
 
   - source: "@quartz-community/comments"
     enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
 
   - source: "@quartz-community/footer"
-    enabled: false
+    enabled: true
     options:
       links: {}
     layout:
@@ -250,8 +249,20 @@ plugins:
     order: 50
 
   - source: "@quartz-community/note-properties"
-    enabled: false
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: false
     order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
 
   - source: "@quartz-community/unlisted-pages"
     enabled: true
@@ -259,11 +270,20 @@ plugins:
     order: 45
 
   - source: "@quartz-community/encrypted-pages"
-    enabled: false
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
     order: 900
 
   - source: "@quartz-community/stacked-pages"
     enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
 
 layout:
   groups:
@@ -277,16 +297,15 @@ layout:
         beforeBody: []
         left: []
         right: []
+    content: {}
     folder:
       exclude:
         - reader-mode
-        - table-of-contents
       positions:
         right: []
     tag:
       exclude:
         - reader-mode
-        - table-of-contents
       positions:
         right: []
     canvas: {}
