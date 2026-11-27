@@ -93,6 +93,36 @@ jobs:
           cp .github/quartz/quartz.config.yaml "$Q/quartz.config.yaml"
           cp .github/quartz/custom.scss "$Q/quartz/styles/custom.scss"
 
+          # 注入左侧栏拖拽调宽脚本（SPA 持久）
+          python3 <<'PY'
+          import json
+          from pathlib import Path
+          import os
+
+          q = Path(os.environ["RUNNER_TEMP"]) / "quartz"
+          script_path = Path(".github/quartz/sidebar-resize.js")
+          index_path = q / "quartz" / "plugins" / "index.ts"
+          script = script_path.read_text(encoding="utf-8")
+          text = index_path.read_text(encoding="utf-8")
+          marker = "  return staticResources\n"
+          if marker not in text:
+              raise SystemExit("ERROR: plugins/index.ts inject marker not found")
+          if "sidebar-resize" in text or "quartz-left-sidebar-width" in text:
+              print("sidebar-resize already injected")
+          else:
+              injection = (
+                  "  // sidebar-resize: left panel drag width\n"
+                  "  staticResources.js.push({\n"
+                  '    loadTime: "afterDOMReady",\n'
+                  '    contentType: "inline",\n'
+                  "    spaPreserve: true,\n"
+                  f"    script: {json.dumps(script)},\n"
+                  "  })\n\n"
+              )
+              index_path.write_text(text.replace(marker, injection + marker, 1), encoding="utf-8")
+              print(f"injected sidebar-resize into {index_path}")
+          PY
+
       - name: Build Quartz
         working-directory: ${{ runner.temp }}/quartz
         run: npx quartz build --config quartz.config.yaml -o "$GITHUB_WORKSPACE/_site" -v

@@ -1,5 +1,119 @@
 @use "./variables.scss" as *;
 
+:root {
+  --left-sidebar-width: #{$sidePanelWidth};
+}
+
+// —— 左侧栏可拖动宽度（桌面/平板）——
+@media all and (min-width: 801px) and (max-width: 1199px) {
+  .page > #quartz-body {
+    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) !important;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .page > #quartz-body {
+    grid-template-columns: var(--left-sidebar-width) minmax(0, 1fr) #{$sidePanelWidth} !important;
+  }
+}
+
+.page > #quartz-body > .sidebar.left {
+  position: sticky;
+  overflow-x: hidden;
+  min-width: 0;
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+}
+
+.sidebar-resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 30;
+  touch-action: none;
+  background: transparent;
+}
+
+.sidebar-resize-handle:hover,
+.sidebar-resize-handle:focus-visible,
+.sidebar-resize-handle.is-dragging {
+  background: color-mix(in srgb, var(--secondary) 35%, transparent);
+}
+
+html.is-resizing-sidebar {
+  cursor: col-resize;
+  user-select: none;
+}
+
+html.is-resizing-sidebar * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+@media all and (max-width: 800px) {
+  .sidebar-resize-handle {
+    display: none;
+  }
+}
+
+// —— 左侧目录标题单行 + 省略号 ——
+.explorer-content {
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+.explorer-content ul,
+.explorer-content li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.explorer-content li > a.nav-file-title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.explorer-content .nav-file-title-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explorer-content .folder-container {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.explorer-content .folder-container > div {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.explorer-content .folder-button {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.explorer-content .folder-title {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // read: true → 左侧 explorer 灰字 + 绿色勾选（对齐 Obsidian explorer-property-attributes）
 .explorer-content .nav-file-title.epa-done .nav-file-title-content {
   color: var(--gray);
