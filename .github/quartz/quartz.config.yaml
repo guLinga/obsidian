@@ -82,6 +82,11 @@ plugins:
 
   - source: "@quartz-community/table-of-contents"
     enabled: true
+    options:
+      maxDepth: 6
+      minEntries: 1
+      showByDefault: true
+      collapseByDefault: false
     order: 50
     layout:
       position: right
