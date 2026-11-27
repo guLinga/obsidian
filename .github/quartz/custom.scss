@@ -1,12 +1,88 @@
-// Quartz 5 custom overrides — Minimal 主题之上的少量布局修补
+// Quartz 5 — 干净三栏阅读样式（不用 Obsidian 主题转换层）
 @use "./variables.scss" as *;
 
-// 页脚（YAML 已关；双保险）
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-ui: 200ms;
+  --duration-press: 140ms;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Hiragino Sans GB", "Noto Sans SC", "Segoe UI", system-ui, sans-serif;
+  --sidebar-bg: #f5f5f7;
+  --content-bg: #ffffff;
+  --hairline: rgba(0, 0, 0, 0.08);
+  --pressable: scale(0.97);
+}
+
+html[saved-theme="dark"],
+:root[saved-theme="dark"] {
+  --sidebar-bg: #161618;
+  --content-bg: #1c1c1e;
+  --hairline: rgba(255, 255, 255, 0.1);
+}
+
 footer {
   display: none !important;
 }
 
-// ----- 左栏：可拖拽宽度 + 标题省略 -----
+html,
+body {
+  height: 100%;
+  font-family: var(--font-ui) !important;
+  -webkit-font-smoothing: antialiased;
+  background: var(--content-bg);
+}
+
+.page {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--font-ui) !important;
+}
+
+// 去掉 Obsidian 主题转换带来的锚点链图标噪音
+a[role="anchor"],
+.internal.tag-link.permalink,
+h1 > a.internal,
+h2 > a.internal,
+h3 > a.internal,
+h4 > a.internal,
+h5 > a.internal,
+h6 > a.internal,
+.markdown-rendered a.header-link,
+.markdown-preview-view .heading-collapse-indicator,
+article h1 .copy-button,
+article h2 .copy-button,
+article h3 .copy-button,
+article .popover-hint a[href^="#"][aria-hidden],
+.center h1 a[href^="#"],
+.center h2 a[href^="#"],
+.center h3 a[href^="#"],
+.center h4 a[href^="#"],
+.center h5 a[href^="#"],
+.center h6 a[href^="#"] {
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  .page > #quartz-body {
+    grid-template-columns: auto minmax(0, 1fr) 260px !important;
+    column-gap: 0 !important;
+    min-height: 100vh;
+    max-width: none !important;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1199px) {
+  .page > #quartz-body {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    column-gap: 0 !important;
+    min-height: 100vh;
+  }
+}
+
+// ----- 左栏 -----
 @media (min-width: 800px) {
   .sidebar.left {
     box-sizing: border-box;
@@ -15,6 +91,27 @@ footer {
     max-width: min(45vw, 420px);
     overflow: auto;
     resize: horizontal;
+    border-right: 1px solid var(--hairline);
+    background: var(--sidebar-bg);
+    padding: 0.85rem 0.55rem 1.5rem !important;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+.page-title {
+  font-size: 0.95rem !important;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  padding: 0.35rem 0.5rem 0.75rem;
+  margin: 0 0 0.45rem !important;
+  box-shadow: 0 1px 0 var(--hairline);
+
+  a {
+    color: var(--dark) !important;
   }
 }
 
@@ -28,9 +125,32 @@ footer {
 .search > .search-button {
   box-sizing: border-box;
   width: 100% !important;
+  height: 1.9rem !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--hairline) !important;
+  background: color-mix(in srgb, var(--light) 70%, transparent) !important;
+  font-size: 0.82rem;
+  transition: transform var(--duration-press) var(--ease-out);
+
+  &:active {
+    transform: var(--pressable);
+  }
+}
+
+.explorer button.desktop-explorer h2,
+.explorer button.mobile-explorer h2 {
+  font-size: 0.72rem !important;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  color: var(--gray);
+  text-transform: uppercase;
 }
 
 .explorer-content {
+  --explorer-row-h: 1.75rem;
+  --explorer-icon: 14px;
+  font-size: 0.875rem;
+
   a,
   .folder-container div > a,
   .folder-container div > button,
@@ -43,34 +163,104 @@ footer {
   }
 
   .folder-container {
-    min-width: 0;
+    display: flex;
+    align-items: center;
+    min-height: var(--explorer-row-h);
     width: 100%;
+    min-width: 0;
+    border-radius: var(--radius-sm);
+    padding: 0 0.35rem 0 0;
   }
 
   .folder-container > div {
     min-width: 0;
     flex: 1 1 auto;
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
-  li > a {
-    display: block;
+  .folder-container > svg,
+  .folder-icon {
+    width: var(--explorer-icon) !important;
+    height: var(--explorer-icon) !important;
+    min-width: var(--explorer-icon) !important;
+    margin: 0 0.35rem 0 0 !important;
+    opacity: 0.5;
+    color: var(--darkgray) !important;
+    stroke: var(--darkgray) !important;
+    flex-shrink: 0;
+  }
+
+  .folder-container div > a,
+  .folder-container div > button span,
+  .folder-title {
+    color: var(--dark) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    line-height: var(--explorer-row-h) !important;
+  }
+
+  li > a,
+  .nav-file-title {
+    display: flex;
+    align-items: center;
+    min-height: var(--explorer-row-h);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-radius: var(--radius-sm);
+    padding: 0 0.4rem;
+    margin: 0.02rem 0;
+    color: var(--darkgray) !important;
+    opacity: 1 !important;
+    background: transparent;
+    font-size: 0.875rem;
+  }
+
+  li > a.active,
+  .nav-file-title.is-active {
+    background: rgba(0, 0, 0, 0.06) !important;
+    color: var(--dark) !important;
+    font-weight: 550;
+  }
+
+  .folder-outer {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .folder-outer > ul {
-    border-left-color: var(--lightgray, #e8e8ed);
+    border-left: none !important;
+    margin: 0 !important;
+    padding-left: calc(var(--explorer-icon) + 0.35rem) !important;
   }
 }
 
-// ----- 中栏：正文限宽居中 -----
+html[saved-theme="dark"] .explorer-content li > a.active {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .explorer-content li > a:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--dark) !important;
+  }
+
+  html[saved-theme="dark"] .explorer-content li > a:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+// ----- 中栏 -----
 @media (min-width: 800px) {
   .page > #quartz-body .center {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    padding: 1.25rem 2rem 3.5rem !important;
+    border-right: 1px solid var(--hairline);
+    background: var(--content-bg);
   }
 }
 
@@ -83,7 +273,113 @@ footer {
   box-sizing: border-box;
 }
 
-// 文件夹列表：中文日期列宽
+.breadcrumb-container {
+  margin: 0 0 0.35rem !important;
+  padding: 0 !important;
+  font-size: 0.75rem;
+  color: var(--gray);
+  gap: 0.15rem !important;
+}
+
+.breadcrumb-element a,
+.breadcrumb-element p {
+  color: var(--gray) !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+.breadcrumb-element:last-child {
+  display: none;
+}
+
+.breadcrumb-element:nth-last-child(2) > p {
+  display: none;
+}
+
+.article-title {
+  margin: 0.15rem 0 0.45rem !important;
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem) !important;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--dark);
+}
+
+.content-meta {
+  font-size: 0.78rem !important;
+  color: var(--gray) !important;
+  margin-bottom: 1.25rem !important;
+}
+
+article,
+.markdown-preview-view,
+.markdown-rendered {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  letter-spacing: -0.003em;
+  color: var(--darkgray);
+  background: transparent !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--dark);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    scroll-margin-top: 1rem;
+    border: none;
+  }
+
+  h2 {
+    font-size: 1.28rem;
+    margin-top: 2rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    margin: 0.85em 0;
+  }
+
+  a {
+    color: var(--secondary);
+  }
+
+  a.internal {
+    background: var(--highlight);
+    border-radius: 4px;
+    padding: 0.05rem 0.25rem;
+    text-decoration: none;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--secondary);
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-left: 0;
+    padding: 0.65rem 1rem;
+  }
+
+  pre {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--hairline);
+  }
+}
+
+html[saved-theme="dark"] article blockquote {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+// 文件夹列表
 .page-listing,
 ul.section-ul {
   width: 100%;
@@ -126,11 +422,17 @@ li.section-li > .section {
   }
 }
 
-// ----- 右栏：大纲可滚到底 -----
+// ----- 右栏大纲 -----
 @media (min-width: 1200px) {
   .sidebar.right {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
     max-height: 100vh;
     overflow: hidden;
+    padding: 1.1rem 0.7rem 1.5rem !important;
+    background: var(--sidebar-bg);
   }
 }
 
@@ -143,13 +445,47 @@ li.section-li > .section {
   flex: 1 1 auto;
 }
 
+button.toc-header h3 {
+  font-size: 0.72rem !important;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
 ul.toc-content.overflow {
   max-height: none !important;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto !important;
   overscroll-behavior: contain;
-  padding-bottom: 1.5rem;
+  padding: 0.15rem 0 1.5rem;
+  font-size: 0.82rem;
+  border: none;
+
+  > li > a {
+    display: block;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0.22rem 0.15rem;
+    background: transparent !important;
+    opacity: 1 !important;
+    color: var(--gray) !important;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  > li > a.in-view {
+    background: transparent !important;
+    color: var(--gray) !important;
+    font-weight: 400;
+  }
+
+  > li:has(> a.in-view):not(:has(~ li > a.in-view)) > a.in-view {
+    color: var(--dark) !important;
+    font-weight: 600;
+  }
 }
 
 ul.toc-content.overflow > li.depth-0 { padding-left: 0; }
@@ -160,11 +496,8 @@ ul.toc-content.overflow > li.depth-4 { padding-left: 2.6rem; }
 ul.toc-content.overflow > li.depth-5 { padding-left: 3.25rem; }
 ul.toc-content.overflow > li.depth-6 { padding-left: 3.9rem; }
 
-// 面包屑：弱化当前页重复标题
-.breadcrumb-element:last-child {
-  display: none;
-}
-
-.breadcrumb-element:nth-last-child(2) > p {
-  display: none;
+@media (max-width: 799px) {
+  .page > #quartz-body .center {
+    padding: 1rem !important;
+  }
 }

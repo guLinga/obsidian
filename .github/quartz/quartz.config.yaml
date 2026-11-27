@@ -115,8 +115,9 @@ plugins:
     enabled: false
     order: 92
 
+  # Minimal 叠在 Quartz 布局上观感偏糙；改回自研样式
   - source: "@quartz-themes/core"
-    enabled: true
+    enabled: false
     options:
       theme: Minimal
       mode: both
