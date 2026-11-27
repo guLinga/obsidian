@@ -80,7 +80,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"tags\"]",
+                "query": "[\"read\"]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -228,7 +228,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -254,7 +254,7 @@
       "qiaomu-home:打开乔木Home": false
     }
   },
-  "active": "65cdd4e9e679717a",
+  "active": "b0b3054590906336",
   "lastOpenFiles": [
     "书籍/伯克富《系统神学》/伯克富，系统神学导论 ，31-45。.md",
     "书籍/佩顿.贝利《女人，一本给男人看的书》/第十二章 男女在一起.md",

@@ -40,6 +40,37 @@ jobs:
         working-directory: ${{ runner.temp }}/quartz
         run: npm ci
 
+      - name: Patch explorer for read:true markers
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          import os
+
+          roots = [
+              Path(os.environ["RUNNER_TEMP"]) / "quartz" / "node_modules" / "@quartz-community" / "explorer",
+          ]
+          needle = 'd.textContent=u.displayName||u.slugSegment,u.data.slug===t&&E.classList.add("active","is-active")'
+          patch = (
+              'd.textContent=u.displayName||u.slugSegment,'
+              'u.data.slug===t&&E.classList.add("active","is-active"),'
+              '(u.data.read===!0||u.data.read===true||u.data.read==="true")&&E.classList.add("epa-done")'
+          )
+          # In the minified inline string, booleans are `!0` for true; keep both forms for safety.
+          patched = 0
+          for root in roots:
+              for path in root.rglob("*.js"):
+                  text = path.read_text(encoding="utf-8")
+                  if needle not in text:
+                      continue
+                  path.write_text(text.replace(needle, patch), encoding="utf-8")
+                  patched += 1
+                  print(f"patched {path}")
+          if patched == 0:
+              raise SystemExit("ERROR: explorer read-marker patch target not found")
+          print(f"ok: patched {patched} file(s)")
+          PY
+
       - name: Prepare content and config
         run: |
           set -euo pipefail
@@ -66,11 +97,11 @@ jobs:
         working-directory: ${{ runner.temp }}/quartz
         run: npx quartz build --config quartz.config.yaml -o "$GITHUB_WORKSPACE/_site" -v
 
-      - name: Slim contentIndex.json
+      - name: Slim contentIndex.json and inject read flags
         run: |
           set -euo pipefail
           python3 <<'PY'
-          import json, sys
+          import json, re, sys
           from pathlib import Path
 
           candidates = [
@@ -86,18 +117,56 @@ jobs:
               print("ERROR: contentIndex.json not found", file=sys.stderr)
               sys.exit(1)
 
+          read_re = re.compile(r"(?m)^read:\s*(?:true|True|yes|YES|1)\s*$")
+
+          def frontmatter_read(path: Path) -> bool:
+              try:
+                  text = path.read_text(encoding="utf-8")
+              except OSError:
+                  return False
+              if not text.startswith("---"):
+                  return False
+              end = text.find("\n---", 3)
+              if end < 0:
+                  return False
+              return bool(read_re.search(text[3:end]))
+
           before = found.stat().st_size
           data = json.loads(found.read_text(encoding="utf-8"))
           n = 0
+          marked = 0
           for entry in data.values():
               if not isinstance(entry, dict):
                   continue
               n += 1
               entry.pop("content", None)
               entry.pop("richContent", None)
+
+              fp = entry.get("filePath") or ""
+              candidates_fp = []
+              if isinstance(fp, str) and fp:
+                  candidates_fp.extend([Path(fp), Path("content") / fp])
+              slug = entry.get("slug")
+              if isinstance(slug, str) and slug:
+                  candidates_fp.extend([Path(f"{slug}.md"), Path("content") / f"{slug}.md"])
+
+              is_read = False
+              for cand in candidates_fp:
+                  if cand.is_file() and frontmatter_read(cand):
+                      is_read = True
+                      break
+              if is_read:
+                  entry["read"] = True
+                  marked += 1
+              else:
+                  entry.pop("read", None)
+
           found.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
           after = found.stat().st_size
-          print(f"slimmed {found}: {n} entries, {before/1024/1024:.2f}MB -> {after/1024/1024:.2f}MB")
+          print(
+              f"slimmed {found}: {n} entries, {marked} read=true, "
+              f"{before/1024/1024:.2f}MB -> {after/1024/1024:.2f}MB"
+          )
           PY
 
       - name: Upload artifact

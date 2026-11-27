@@ -1,3 +1,16 @@
 @use "./variables.scss" as *;
 
-// Quartz 5 默认样式，无自定义覆盖
+// read: true → 左侧 explorer 灰字 + 绿色勾选（对齐 Obsidian explorer-property-attributes）
+.explorer-content .nav-file-title.epa-done .nav-file-title-content {
+  color: var(--gray);
+}
+
+.explorer-content .nav-file-title.epa-done .nav-file-title-content::before {
+  content: "✓ ";
+  color: #27ae60;
+  font-weight: 700;
+}
+
+.explorer-content .nav-file-title.epa-done {
+  opacity: 1;
+}

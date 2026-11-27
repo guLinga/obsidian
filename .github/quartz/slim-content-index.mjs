@@ -55,20 +55,51 @@ if (!indexPath) {
   process.exit(1)
 }
 
+const readRe = /^read:\s*(?:true|True|yes|YES|1)\s*$/m
+
+function frontmatterRead(filePath) {
+  try {
+    const text = fs.readFileSync(filePath, "utf8")
+    if (!text.startsWith("---")) return false
+    const end = text.indexOf("\n---", 3)
+    if (end < 0) return false
+    return readRe.test(text.slice(3, end))
+  } catch {
+    return false
+  }
+}
+
 const before = fs.statSync(indexPath).size
 const data = JSON.parse(fs.readFileSync(indexPath, "utf8"))
 
 let entries = 0
+let marked = 0
 for (const key of Object.keys(data)) {
   const entry = data[key]
   if (!entry || typeof entry !== "object") continue
   entries++
   delete entry.content
   delete entry.richContent
+
+  const candidates = []
+  if (typeof entry.filePath === "string" && entry.filePath) {
+    candidates.push(entry.filePath, path.join("content", entry.filePath))
+  }
+  if (typeof entry.slug === "string" && entry.slug) {
+    candidates.push(`${entry.slug}.md`, path.join("content", `${entry.slug}.md`))
+  }
+
+  const isRead = candidates.some((p) => fs.existsSync(p) && frontmatterRead(p))
+  if (isRead) {
+    entry.read = true
+    marked++
+  } else {
+    delete entry.read
+  }
 }
 
 fs.writeFileSync(indexPath, JSON.stringify(data))
 const after = fs.statSync(indexPath).size
 console.log(
-  `[slim-content-index] ${indexPath}\n  ${entries} entries: ${(before / 1024 / 1024).toFixed(2)}MB -> ${(after / 1024 / 1024).toFixed(2)}MB`,
+  `[slim-content-index] ${indexPath}\n  ${entries} entries, ${marked} read=true: ${(before / 1024 / 1024).toFixed(2)}MB -> ${(after / 1024 / 1024).toFixed(2)}MB`,
 )
