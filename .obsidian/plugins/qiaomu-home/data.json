@@ -19,14 +19,14 @@
     "localChosenOn": "",
     "localSelectionKey": "",
     "current": {
-      "id": "curated:Xk2Pl7CMKYY",
-      "url": "https://images.unsplash.com/photo-1564376130023-5360fbb7c91b",
-      "author": "Johannes Mändle",
-      "authorUrl": "https://unsplash.com/@leonardo_64?utm_source=qiaomu_home&utm_medium=referral",
-      "page": "https://unsplash.com/photos/Xk2Pl7CMKYY?utm_source=qiaomu_home&utm_medium=referral",
+      "id": "curated:EeOgxp9_Rfk",
+      "url": "https://images.unsplash.com/photo-1603137884437-f31086c73ec4",
+      "author": "Anna Tsareva",
+      "authorUrl": "https://unsplash.com/@tsariovaanna?utm_source=qiaomu_home&utm_medium=referral",
+      "page": "https://unsplash.com/photos/EeOgxp9_Rfk?utm_source=qiaomu_home&utm_medium=referral",
       "color": "#a6c0c0"
     },
-    "chosenOn": "2026-11-26"
+    "chosenOn": "2026-11-27"
   },
   "actions": [
     "builtin:daily",

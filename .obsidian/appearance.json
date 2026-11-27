@@ -1,4 +1,5 @@
 {
   "theme": "moonstone",
-  "textFontFamily": "TsangerYuYangT,PingFang SC,Hannotate SC"
+  "textFontFamily": "TsangerYuYangT,PingFang SC,Hannotate SC",
+  "showRibbon": true
 }
