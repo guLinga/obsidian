@@ -435,3 +435,236 @@ article th {
   max-width: none !important;
   width: 100% !important;
 }
+
+/* =========================================
+   Minimal Reading v2
+   正文细节 + 左上角站点头部
+   ========================================= */
+
+/* ---------- A. 正文阅读节奏 ---------- */
+
+:root {
+  --reading-width: 710px;
+  --reading-size: 17px;
+  --reading-line: 1.92;
+  --article-muted: color-mix(in srgb, var(--darkgray) 72%, transparent);
+  --article-soft-bg: color-mix(in srgb, var(--lightgray) 45%, transparent);
+}
+
+/* 标题不要挤在正文段落里 */
+article h1 {
+  font-size: clamp(1.8rem, 3vw, 2.05rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.42;
+  margin-top: 0.35em;
+  margin-bottom: 1.25em;
+}
+
+article h2 {
+  position: relative;
+  font-size: 1.38rem;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-top: 2.8em;
+  margin-bottom: 1.05em;
+  padding-bottom: 0.55em;
+  border-bottom: 1px solid var(--minimal-border);
+}
+
+article h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+/* 正文段落的节奏 */
+article p {
+  margin-top: 0;
+  margin-bottom: 1.35em;
+  line-height: var(--reading-line);
+}
+
+article strong,
+article b {
+  font-weight: 600;
+}
+
+/* 行内代码：与代码块区分 */
+article :not(pre) > code {
+  padding: 0.12em 0.38em;
+  border: 1px solid var(--lightgray);
+  border-radius: 4px;
+  background: var(--article-soft-bg);
+  font-size: 0.88em;
+  overflow-wrap: anywhere;
+}
+
+/* 引用块更轻 */
+article blockquote {
+  padding: 0.9em 1.15em;
+  border-left-width: 2px;
+  background: var(--article-soft-bg);
+  color: var(--article-muted);
+}
+
+article blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* 列表间距与正文保持一致 */
+article li {
+  line-height: 1.85;
+  margin-bottom: 0.5em;
+}
+
+article li > p {
+  margin-bottom: 0.55em;
+}
+
+/* 分割线 */
+article hr {
+  border: 0;
+  border-top: 1px solid var(--minimal-border);
+  margin: 2.8em 0;
+}
+
+/* 表格弱化边框 */
+article table {
+  border: 0;
+  line-height: 1.7;
+}
+
+article thead {
+  border-bottom: 1px solid var(--gray);
+}
+
+article th {
+  background: var(--article-soft-bg);
+  font-weight: 600;
+}
+
+article tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- B. 左上角站点名称 ---------- */
+
+/* Quartz PageTitle 常用类名 */
+.page-title {
+  margin: 0.15rem 0 1.1rem;
+  font-size: 1.55rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.page-title a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.page-title a:hover {
+  opacity: 0.78;
+}
+
+/* 左侧栏头部保持紧凑 */
+.page > #quartz-body > .sidebar.left {
+  padding-top: 1.15rem;
+}
+
+/* ---------- C. 搜索框 ---------- */
+
+#search-container {
+  margin-block: 0.7rem 0.9rem;
+}
+
+#search-container input,
+#search-container .search-bar,
+#search-container > input {
+  border: 1px solid var(--lightgray);
+  border-radius: 7px;
+  background: var(--article-soft-bg);
+  box-shadow: none;
+  font-size: 0.9rem;
+  min-height: 38px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#search-container input:focus,
+#search-container .search-bar:focus-within {
+  outline: none;
+  border-color: var(--tertiary);
+  background: var(--light);
+}
+
+/* ---------- D. 左上角工具按钮 ---------- */
+
+#darkmode,
+#readermode,
+#search-button {
+  border-radius: 7px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#darkmode:hover,
+#readermode:hover,
+#search-button:hover {
+  background: var(--article-soft-bg);
+}
+
+/* ---------- E. Explorer 标题与分隔 ---------- */
+
+#explorer {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--minimal-border);
+}
+
+#explorer h2,
+#explorer h3,
+#explorer .explorer-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- F. 右侧目录 ---------- */
+
+#quartz-body .sidebar.right {
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+#quartz-body .sidebar.right a {
+  text-decoration: none;
+}
+
+#quartz-body .sidebar.right a:hover {
+  color: var(--secondary);
+}
+
+/* ---------- G. 移动端 ---------- */
+
+@media (max-width: 800px) {
+  :root {
+    --reading-width: 100%;
+    --reading-size: 16px;
+    --reading-line: 1.88;
+  }
+
+  .page-title {
+    font-size: 1.35rem;
+  }
+
+  article h1 {
+    font-size: 1.65rem;
+  }
+
+  article h2 {
+    font-size: 1.25rem;
+    margin-top: 2.2em;
+  }
+}
