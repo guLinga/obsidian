@@ -668,3 +668,161 @@ article tr:last-child td {
     margin-top: 2.2em;
   }
 }
+
+/* =========================================
+   Minimal Header Polish
+   搜索框与阅读模式（书本）按钮
+   ========================================= */
+
+/* 搜索区域：更宽松、轻盈、有层次 */
+#search-container {
+  position: relative;
+  margin: 1rem 0 1.15rem;
+}
+
+#search-container .search-bar,
+#search-container input,
+#search-container > div {
+  box-sizing: border-box;
+}
+
+#search-container .search-bar {
+  min-height: 44px;
+  padding: 0 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--gray) 24%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--lightgray) 38%, var(--light));
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--dark) 3%, transparent);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+#search-container .search-bar:hover {
+  border-color: color-mix(in srgb, var(--secondary) 38%, var(--gray));
+  background: var(--light);
+}
+
+#search-container .search-bar:focus-within {
+  border-color: color-mix(in srgb, var(--secondary) 65%, var(--gray));
+  background: var(--light);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--secondary) 11%, transparent),
+    0 2px 8px color-mix(in srgb, var(--dark) 5%, transparent);
+}
+
+#search-container input {
+  min-height: 42px;
+  padding: 0.55rem 0.2rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+#search-container input::placeholder {
+  color: var(--gray);
+  opacity: 0.78;
+}
+
+/* 搜索图标：统一线条、颜色和尺寸 */
+#search-container svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.7;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+/* 顶部功能按钮：统一为精致的柔和方圆角 */
+#darkmode,
+#readermode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--gray) 20%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--lightgray) 35%, var(--light));
+  color: var(--darkgray);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--dark) 3%, transparent);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+#darkmode:hover,
+#readermode:hover {
+  color: var(--secondary);
+  border-color: color-mix(in srgb, var(--secondary) 35%, var(--gray));
+  background: var(--light);
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--dark) 7%, transparent);
+  transform: translateY(-1px);
+}
+
+#darkmode:active,
+#readermode:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 书本图标：稍大一些，线条更轻、更有质感 */
+#readermode svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 太阳/月亮图标与书本保持一致 */
+#darkmode svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 键盘焦点状态 */
+#darkmode:focus-visible,
+#readermode:focus-visible,
+#search-container input:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* 暗色模式下仍保持轻盈边界 */
+[saved-theme="dark"] #search-container .search-bar,
+[saved-theme="dark"] #darkmode,
+[saved-theme="dark"] #readermode {
+  border-color: color-mix(in srgb, var(--gray) 28%, transparent);
+  background: color-mix(in srgb, var(--lightgray) 55%, var(--light));
+  box-shadow: none;
+}
+
+[saved-theme="dark"] #search-container .search-bar:hover,
+[saved-theme="dark"] #darkmode:hover,
+[saved-theme="dark"] #readermode:hover {
+  border-color: color-mix(in srgb, var(--secondary) 55%, var(--gray));
+  background: var(--light);
+}
+
+/* 减少动态效果偏好 */
+@media (prefers-reduced-motion: reduce) {
+  #search-container .search-bar,
+  #darkmode,
+  #readermode {
+    transition: none;
+  }
+}
