@@ -152,6 +152,11 @@ plugins:
     layout:
       position: left
       priority: 50
+    options:
+      title: "探索"
+      folderClickBehavior: collapse
+      folderDefaultState: collapsed
+      useSavedState: true
 
   - source: "@quartz-community/graph"
     enabled: true
