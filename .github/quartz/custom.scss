@@ -130,35 +130,31 @@ html.is-resizing-sidebar * {
   opacity: 1;
 }
 
-// start
-
 /* =========================================
-   Minimal Digital Garden
-   Designed for Quartz 5.2.2
+   Minimal Reading — Quartz 5
+   左侧目录减重 + 中文正文阅读优化
    ========================================= */
 
-/* ---------- 01. Typography ---------- */
-
 :root {
-  --reading-width: 760px;
+  --reading-width: 740px;
   --reading-size: 17px;
-  --reading-line: 1.9;
-
-  --minimal-accent: #687f70;
+  --reading-line: 1.95;
   --minimal-border: #e8e7e2;
 }
 
 body {
   font-family:
-    Inter,
+    "Noto Sans SC",
     "PingFang SC",
     "Microsoft YaHei",
-    "Noto Sans CJK SC",
+    "Source Sans Pro",
     sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* ---------- 02. Article width ---------- */
-
+/* 正文宽度 */
 #quartz-body .center {
   min-width: 0;
 }
@@ -170,69 +166,76 @@ body {
   box-sizing: border-box;
 }
 
-/* ---------- 03. Chinese & English ---------- */
-
+/* 正文排版 */
 article {
   font-size: var(--reading-size);
+  font-weight: 400;
   line-height: var(--reading-line);
   letter-spacing: 0.015em;
-
   text-align: left;
   word-break: normal;
-  overflow-wrap: anywhere;
-
+  overflow-wrap: break-word;
   font-kerning: normal;
   font-variant-east-asian: proportional-width;
-
   text-autospace: normal;
 }
 
 article p {
-  margin-top: 0;
-  margin-bottom: 1.2em;
+  margin-block: 0 1.25em;
 }
 
-/* ---------- 04. Headings ---------- */
+/* 标题：避免过粗 */
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Source Sans Pro",
+    sans-serif;
+  color: var(--dark);
+  letter-spacing: 0;
+  line-height: 1.55;
+}
 
 article h1 {
-  font-size: 2rem;
+  font-size: 1.9rem;
+  font-weight: 600;
   line-height: 1.4;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-  margin-top: 0.5em;
-  margin-bottom: 1.2em;
+  margin: 0.45em 0 1.1em;
 }
 
 article h2 {
-  font-size: 1.45rem;
-  line-height: 1.55;
-  font-weight: 650;
-  margin-top: 2.6em;
-  margin-bottom: 1em;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2.5em 0 0.9em;
   padding-bottom: 0.45em;
   border-bottom: 1px solid var(--minimal-border);
 }
 
 article h3 {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-top: 2em;
-  margin-bottom: 0.8em;
+  font-size: 1.16rem;
+  font-weight: 600;
+  margin: 1.9em 0 0.7em;
 }
 
 article h4,
 article h5,
 article h6 {
-  line-height: 1.6;
-  margin-top: 1.6em;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.6em 0 0.6em;
 }
 
-/* ---------- 05. Links ---------- */
-
+/* 链接 */
 article a {
   color: var(--secondary);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 28%, transparent);
   transition: border-color 0.2s ease;
 }
 
@@ -240,32 +243,27 @@ article a:hover {
   border-bottom-color: var(--secondary);
 }
 
-/* ---------- 06. Blockquotes ---------- */
-
+/* 引用 */
 article blockquote {
   margin: 1.5em 0;
-  padding: 0.8em 1.2em;
-
+  padding: 0.75em 1.1em;
   border-left: 3px solid var(--tertiary);
   border-radius: 0 5px 5px 0;
-
   background: var(--highlight);
 }
 
-/* ---------- 07. Lists ---------- */
-
+/* 列表 */
 article ul,
 article ol {
   padding-left: 1.5em;
 }
 
 article li {
-  padding-left: 0.2em;
-  margin-bottom: 0.45em;
+  padding-left: 0.15em;
+  margin-bottom: 0.4em;
 }
 
-/* ---------- 08. Images ---------- */
-
+/* 图片 */
 article img {
   max-width: 100%;
   height: auto;
@@ -273,103 +271,158 @@ article img {
 }
 
 article figure {
-  margin: 2em 0;
+  margin: 1.8em 0;
 }
 
 article figcaption {
-  font-size: 0.85em;
+  margin-top: 0.55em;
   color: var(--gray);
+  font-size: 0.85em;
   text-align: center;
-  margin-top: 0.6em;
 }
 
-/* ---------- 09. Code ---------- */
-
+/* 代码 */
 article pre {
+  padding: 1.1em;
   border: 1px solid var(--lightgray);
   border-radius: 7px;
-  padding: 1.2em;
+  font-size: 0.86em;
   line-height: 1.7;
-  font-size: 0.88em;
   overflow-x: auto;
 }
 
 article code {
-  font-family:
-    "JetBrains Mono",
-    "SFMono-Regular",
-    Consolas,
-    monospace;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
-/* ---------- 10. Tables ---------- */
-
+/* 表格 */
 article table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.92em;
+  font-size: 0.93em;
 }
 
 article th,
 article td {
-  padding: 0.7em 0.9em;
+  padding: 0.65em 0.85em;
   border-bottom: 1px solid var(--lightgray);
 }
 
 article th {
-  font-weight: 650;
+  font-weight: 600;
   text-align: left;
 }
 
-/* ---------- 11. Explorer ---------- */
-
-#explorer {
-  font-size: 0.9rem;
+/* Explorer：目录字体改为常规字重 */
+#explorer,
+.explorer,
+.explorer-content {
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.65;
 }
 
-#explorer a {
+#explorer a,
+.explorer a,
+.explorer-content a,
+.explorer-content .folder-title,
+.explorer-content .nav-file-title-content {
+  font-weight: 400 !important;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
-#explorer a:hover {
+.explorer-content .folder-title {
+  font-weight: 500 !important;
+}
+
+.explorer-content a[aria-current="page"],
+.explorer-content a.active {
+  font-weight: 500 !important;
   color: var(--secondary);
 }
 
-#explorer .folder-container {
-  margin-block: 0.15em;
+/* 文件名单行省略 */
+.explorer-content {
+  min-width: 0;
+  overflow-x: hidden;
 }
 
-/* ---------- 12. Right sidebar ---------- */
+.explorer-content ul,
+.explorer-content li {
+  min-width: 0;
+  max-width: 100%;
+}
 
+.explorer-content li > a.nav-file-title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.explorer-content .nav-file-title-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explorer-content .folder-container {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  margin-block: 0.12em;
+}
+
+.explorer-content .folder-container > div {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.explorer-content .folder-button {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* 右侧栏 */
 #quartz-body .sidebar.right {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
-/* ---------- 13. Responsive ---------- */
+#quartz-body .sidebar.right h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
 
+/* 响应式 */
 @media (max-width: 1200px) {
   :root {
     --reading-width: 100%;
   }
 
   #quartz-body .center article {
-    padding-inline: 1.2rem;
+    padding-inline: 1.1rem;
   }
 }
 
 @media (max-width: 800px) {
   :root {
     --reading-size: 16px;
-    --reading-line: 1.85;
+    --reading-line: 1.9;
   }
 
   article h1 {
-    font-size: 1.7rem;
+    font-size: 1.65rem;
   }
 
   article h2 {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin-top: 2em;
   }
 
